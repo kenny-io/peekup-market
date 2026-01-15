@@ -1,0 +1,102 @@
+@import 'tailwindcss';
+
+@plugin '@tailwindcss/forms';
+
+@theme {
+  --text-*: initial;
+  --text-xs: 0.75rem;
+  --text-xs--line-height: 1rem;
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.5rem;
+  --text-base: 1rem;
+  --text-base--line-height: 1.5rem;
+  --text-lg: 1.125rem;
+  --text-lg--line-height: 2rem;
+  --text-xl: 1.25rem;
+  --text-xl--line-height: 1.75rem;
+  --text-2xl: 1.5rem;
+  --text-2xl--line-height: 2rem;
+  --text-3xl: 2rem;
+  --text-3xl--line-height: 3rem;
+  --text-4xl: 2.5rem;
+  --text-4xl--line-height: 3rem;
+  --text-5xl: 3rem;
+  --text-5xl--line-height: 1;
+  --text-6xl: 3.75rem;
+  --text-6xl--line-height: 1;
+  --text-7xl: 4.5rem;
+  --text-7xl--line-height: 1;
+  --text-8xl: 6rem;
+  --text-8xl--line-height: 1;
+  --text-9xl: 8rem;
+  --text-9xl--line-height: 1;
+
+  --animate-fade-in: fade-in 0.5s linear forwards;
+  --animate-spin-slow: spin 4s linear infinite;
+  --animate-spin-slower: spin 6s linear infinite;
+  --animate-spin-reverse: spin-reverse 1s linear infinite;
+  --animate-spin-reverse-slow: spin-reverse 4s linear infinite;
+  --animate-spin-reverse-slower: spin-reverse 6s linear infinite;
+
+  --radius-4xl: 2rem;
+  --radius-5xl: 2.5rem;
+
+  /* Peekup neutrals */
+  --color-gray-50: #f5f2eb;
+  --color-gray-100: #e6e2d8;
+  --color-gray-200: #e2e8f0;
+  --color-gray-300: #e2e8f0;
+  --color-gray-400: #475569;
+  --color-gray-500: #475569;
+  --color-gray-600: #475569;
+  --color-gray-700: #475569;
+  --color-gray-800: #0b1223;
+  --color-gray-900: #0f172a;
+  --color-gray-950: #020617;
+
+  /* Peekup primaries */
+  --color-orange-50: #ffead7;
+  --color-orange-100: #ffd6ae;
+  --color-orange-200: #ffb347;
+  --color-orange-300: #ffb347;
+  --color-orange-400: #f97316;
+  --color-orange-500: #f97316;
+  --color-orange-600: #f97316;
+  --color-orange-700: #ea580c;
+  --color-orange-800: #c2410c;
+  --color-orange-900: #9a3412;
+
+  /* Accent and status */
+  --color-indigo-500: #6366f1;
+  --color-indigo-600: #4f46e5;
+  --color-emerald-500: #22c55e;
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', sans-serif;
+
+  --container-2xl: 40rem;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes spin-reverse {
+    to {
+      transform: rotate(-360deg);
+    }
+  }
+}
+
+@theme inline {
+  --animate-marquee: marquee var(--marquee-duration) linear infinite;
+
+  @keyframes marquee {
+    100% {
+      transform: translateY(-50%);
+    }
+  }
+}
