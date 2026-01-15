@@ -5,7 +5,6 @@ import { Container } from '@/components/Container'
 import { Logomark } from '@/components/Logo'
 import { NavLinks } from '@/components/NavLinks'
 import { NewsletterForm } from '@/components/NewsletterForm'
-import qrCode from '@/images/qr-code.svg'
 
 function QrCodeBorder(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -38,7 +37,7 @@ export function Footer() {
           <div className="group relative -mx-4 flex items-center self-stretch rounded-2xl border border-gray-200 bg-white p-4 transition-colors hover:border-orange-200 sm:self-auto lg:mx-0 lg:self-auto lg:p-6">
             <div className="relative flex h-24 w-24 flex-none items-center justify-center">
               <QrCodeBorder className="absolute inset-0 h-full w-full stroke-gray-300 transition-colors group-hover:stroke-orange-600" />
-              <Image src={qrCode} alt="" unoptimized />
+              <Image src="/images/peekupqr.png" alt="Scan to download Peekup" width={64} height={64} unoptimized />
             </div>
             <div className="ml-8 lg:w-64">
               <p className="text-base font-semibold text-gray-900">
