@@ -31,7 +31,7 @@ const services: Array<ServiceOption> = [
       'Real-time order tracking',
       'Proof of delivery on request',
     ],
-    logoVariant: 'light',
+    logoVariant: 'dark',
   },
   {
     name: 'Business',
@@ -49,25 +49,25 @@ const services: Array<ServiceOption> = [
       'Dedicated launch support',
       'Invoice + receipts for finance',
     ],
-    logoVariant: 'light',
+    logoVariant: 'dark',
   },
   {
-    name: 'Night Ops',
+    name: 'Peekup Go',
     featured: true,
-    tagline: '10 PM – 5 AM',
+    tagline: 'P2P delivery',
     description:
-      'Security-vetted riders for nightlife restocks, emergencies, and late-night errands when other services sleep.',
+      'Send packages across Enugu instantly. Simple distance-based pricing with live map tracking and insured deliveries.',
     button: {
-      label: 'Request Night Ops',
-      href: '/waitlist',
+      label: 'Learn more',
+      href: '/go',
     },
     features: [
-      'Dedicated night-time fleet',
-      'Safety checks and verification',
-      'Multi-stop routes available',
-      'Live support during night hours',
+      'Live map tracking',
+      'Transparent per-km pricing',
+      'Insured up to ₦50,000',
+      'Book a rider in 3 taps',
     ],
-    logoVariant: 'dark',
+    logoVariant: 'light',
   },
 ]
 
@@ -195,8 +195,8 @@ export function Services() {
             What we offer
           </h2>
           <p className="mt-2 text-lg text-gray-600">
-            Peekup is free to use. Order from any vendor, pay the rider on
-            delivery. For business or night coverage, we've got you covered too.
+            Peekup is free to use. Order from any vendor, pay upfront at checkout.
+            For business logistics or P2P delivery, we have got you covered too.
           </p>
         </div>
 

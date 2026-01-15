@@ -132,7 +132,7 @@ function CheckIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 function GoLogomark({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 40 40" fill="none" className={className}>
-      <rect width="40" height="40" rx="8" fill="#059669" />
+      <rect width="40" height="40" rx="8" fill="#111827" />
       <path
         d="M20 10L12 14v8l8 4 8-4v-8l-8-4z"
         stroke="white"
@@ -154,8 +154,8 @@ interface FeatureCardProps {
 function FeatureCard({ icon: Icon, title, description }: FeatureCardProps) {
   return (
     <div className="text-center">
-      <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-emerald-100">
-        <Icon className="h-8 w-8 text-emerald-700" />
+      <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-orange-100">
+        <Icon className="h-8 w-8 text-orange-600" />
       </div>
       <h3 className="mt-6 text-lg font-semibold text-gray-900">{title}</h3>
       <p className="mt-2 text-base leading-relaxed text-gray-700">{description}</p>
@@ -209,7 +209,7 @@ function PackageSizeCard({
     <section
       className={clsx(
         'flex flex-col overflow-hidden rounded-3xl p-6 shadow-lg shadow-gray-900/5',
-        featured ? 'order-first bg-emerald-700 lg:order-none' : 'bg-white',
+        featured ? 'order-first bg-gray-900 lg:order-none' : 'bg-white',
       )}
     >
       <h3
@@ -232,7 +232,7 @@ function PackageSizeCard({
       <p
         className={clsx(
           'mt-3 text-sm leading-relaxed',
-          featured ? 'text-emerald-100' : 'text-gray-700',
+          featured ? 'text-gray-300' : 'text-gray-700',
         )}
       >
         {description}
@@ -243,7 +243,7 @@ function PackageSizeCard({
           className={clsx(
             '-my-2 divide-y text-sm',
             featured
-              ? 'divide-emerald-600 text-emerald-100'
+              ? 'divide-gray-800 text-gray-300'
               : 'divide-gray-200 text-gray-700',
           )}
         >
@@ -252,7 +252,7 @@ function PackageSizeCard({
               <CheckIcon
                 className={clsx(
                   'h-6 w-6 flex-none',
-                  featured ? 'text-white' : 'text-emerald-600',
+                  featured ? 'text-white' : 'text-orange-600',
                 )}
               />
               <span className="ml-4">{item}</span>
@@ -262,7 +262,7 @@ function PackageSizeCard({
       </div>
       <Button
         href="/waitlist"
-        color={featured ? 'soft' : 'navy'}
+        color={featured ? 'primary' : 'navy'}
         className="mt-6"
         aria-label={`Send ${name} package`}
       >
@@ -276,36 +276,36 @@ export default function GoPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="bg-emerald-700 px-4 pb-20 pt-32 text-white">
+      <section className="bg-gray-900 px-4 pb-20 pt-32 text-white">
         <Container>
           <Link
             href="/"
-            className="mb-8 inline-flex items-center font-medium text-emerald-200 transition-colors hover:text-white"
+            className="mb-8 inline-flex items-center font-medium text-gray-400 transition-colors hover:text-white"
           >
             <ArrowLeftIcon className="mr-2 h-4 w-4" />
             Back to Home
           </Link>
           <div className="max-w-3xl">
-            <div className="mb-6 inline-flex items-center space-x-2 rounded-full border border-emerald-500 bg-emerald-600/50 px-4 py-1.5">
+            <div className="mb-6 inline-flex items-center space-x-2 rounded-full border border-gray-700 bg-gray-800/50 px-4 py-1.5">
               <SmartphoneIcon className="h-4 w-4" />
               <span className="font-mono text-xs font-semibold uppercase tracking-wide">Peekup Go</span>
             </div>
             <h1 className="mb-6 text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
               Instant P2P Delivery for Everyone.
             </h1>
-            <p className="max-w-2xl text-xl font-medium leading-relaxed text-emerald-100">
-              Send a package from New Haven to Emene instantly. Simple pricing based on distance,
+            <p className="max-w-2xl text-xl font-medium leading-relaxed text-gray-300">
+              Send a package from your location to anywhere in Enugu in minutes. Simple pricing based on distance,
               with a live map to track your rider every second of the way.
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <Button href="/waitlist" className="hover:bg-emerald-600/20 text-emerald-700 bg-emerald-50">
+              <Button href="/waitlist" color="primary">
                 Get Started
               </Button>
               <Button
                 href="#sizes"
                 variant="outline"
                 color="transparent"
-                className="border-emerald-400 text-white hover:bg-emerald-600/20"
+                className="border-gray-600 text-white hover:bg-gray-800"
               >
                 See Package Sizes
               </Button>
@@ -348,7 +348,7 @@ export default function GoPage() {
       {/* Package Sizes Section */}
       <section
         id="sizes"
-        className="scroll-mt-20 border-t border-gray-200 bg-gray-100 px-4 py-20 sm:py-28"
+        className="scroll-mt-20 border-t border-orange-100 bg-orange-50 px-4 py-20 sm:py-28"
       >
         <Container>
           <div className="mx-auto max-w-2xl text-center">
@@ -405,27 +405,24 @@ export default function GoPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-emerald-700 px-4 py-20 text-white sm:py-28">
+      <section className="bg-gray-900 px-4 py-20 text-white sm:py-28">
         <Container>
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
               Ready to send something?
             </h2>
-            <p className="mt-4 text-lg font-medium leading-relaxed text-emerald-100">
+            <p className="mt-4 text-lg font-medium leading-relaxed text-gray-300">
               Join thousands of Enugu residents using Peekup Go for fast, reliable P2P deliveries.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button
-                href="/waitlist"
-                className="bg-emerald-50 text-emerald-700 hover:bg-emerald-100"
-              >
+              <Button href="/waitlist" color="primary">
                 Join the Waitlist
               </Button>
               <Button
                 href="/"
                 variant="outline"
                 color="transparent"
-                className="border-emerald-400 text-white hover:bg-emerald-600/20"
+                className="border-gray-600 text-white hover:bg-gray-800"
               >
                 Back to Home
               </Button>
