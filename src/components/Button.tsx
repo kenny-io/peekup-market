@@ -41,22 +41,19 @@ type ButtonProps = (
   )
 
 export function Button({ className, ...props }: ButtonProps) {
-  props.variant ??= 'solid'
-  props.color ??= props.variant === 'outline' ? 'neutral' : 'primary'
+  const variant = props.variant ?? 'solid'
+  const color = props.color ?? (variant === 'outline' ? 'neutral' : 'primary')
 
-  className = clsx(
-    baseStyles[props.variant],
-    props.variant === 'outline'
-      ? variantStyles.outline[props.color]
-      : props.variant === 'solid'
-        ? variantStyles.solid[props.color]
-        : undefined,
-    className,
-  )
+  const variantClassName =
+    variant === 'outline'
+      ? variantStyles.outline[color as keyof typeof variantStyles.outline]
+      : variantStyles.solid[color as keyof typeof variantStyles.solid]
+
+  const combinedClassName = clsx(baseStyles[variant], variantClassName, className)
 
   return typeof props.href === 'undefined' ? (
-    <button className={className} {...props} />
+    <button className={combinedClassName} {...props} />
   ) : (
-    <Link className={className} {...props} />
+    <Link className={combinedClassName} {...props} />
   )
 }
