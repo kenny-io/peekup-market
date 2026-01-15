@@ -11,6 +11,7 @@ export function NavLinks() {
   return [
     ['Features', '/#features'],
     ['Services', '/#services'],
+    ['Peekup Go', '/go'],
     ['Business', '/business'],
     ['FAQs', '/#faqs'],
   ].map(([label, href], index) => (

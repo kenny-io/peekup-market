@@ -6,8 +6,33 @@ import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
 
 export const metadata: Metadata = {
-  title: 'Peekup Business - Corporate Logistics Platform',
-  description: 'The operating system for corporate logistics. Manage fleets, track digital waybills, and automate payments for your business.',
+  title: 'Peekup Business - Corporate Logistics Platform for Enugu',
+  description:
+    'The operating system for corporate logistics in Enugu. Manage fleets, track digital waybills, corporate wallets, and automate payments for banks, law firms, pharmacies and retailers.',
+  keywords: [
+    'corporate logistics',
+    'business delivery',
+    'fleet management',
+    'digital waybill',
+    'proof of delivery',
+    'Enugu business logistics',
+    'corporate wallet',
+  ],
+  openGraph: {
+    title: 'Peekup Business - Corporate Logistics Platform',
+    description:
+      'Stop using petty cash for deliveries. Manage fleets, track digital waybills, and automate payments with Peekup Business.',
+    url: 'https://peekup.ng/business',
+    images: [{ url: '/seo/peekupseo.png', width: 1200, height: 630 }],
+  },
+  twitter: {
+    title: 'Peekup Business - Corporate Logistics Platform',
+    description: 'The operating system for corporate logistics. Manage fleets and automate payments.',
+    images: ['/seo/peekupseo.png'],
+  },
+  alternates: {
+    canonical: 'https://peekup.ng/business',
+  },
 }
 
 function CreditCardIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
@@ -183,18 +208,15 @@ export default function BusinessPage() {
               </div>
             </div>
             <div className="flex-1 w-full">
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border border-gray-200 bg-gray-100">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center p-8">
-                    <div className="w-16 h-16 mx-auto rounded-full bg-orange-100 flex items-center justify-center mb-4">
-                      <LayersIcon className="w-8 h-8 text-orange-600" />
-                    </div>
-                    <p className="text-gray-600 font-medium">
-                      Business Dashboard Preview
-                    </p>
-                    <p className="text-sm text-gray-500 mt-2">Coming Soon</p>
-                  </div>
-                </div>
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border border-gray-200">
+                <Image
+                  src="/images/peekup-business.png"
+                  alt="Peekup Business Dashboard - Corporate logistics management platform"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  priority
+                />
               </div>
             </div>
           </div>

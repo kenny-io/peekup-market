@@ -20,6 +20,8 @@ const variantStyles = {
   outline: {
     neutral:
       'border-gray-200 text-gray-900 hover:bg-gray-50 active:bg-gray-100 active:text-gray-900',
+    transparent:
+      'border-current bg-transparent',
   },
 }
 

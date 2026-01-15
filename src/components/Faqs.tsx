@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import { Container } from '@/components/Container'
 
 const faqs = [
@@ -71,12 +73,12 @@ export function Faqs() {
           </h2>
           <p className="mt-2 text-lg text-gray-600">
             If you have anything else you want to ask,{' '}
-            <a
-              href="mailto:hello@peekup.ng"
-              className="text-gray-900 underline"
+            <Link
+              href="/register"
+              className="text-orange-600 underline hover:text-orange-700"
             >
               reach out to us
-            </a>
+            </Link>
             .
           </p>
         </div>

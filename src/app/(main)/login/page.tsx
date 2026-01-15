@@ -7,7 +7,22 @@ import { TextField } from '@/components/Fields'
 import { CirclesBackground } from '@/components/CirclesBackground'
 
 export const metadata: Metadata = {
-  title: 'Sign In - Peekup',
+  title: 'Sign In to Your Account',
+  description:
+    'Sign in to your Peekup account to order from local businesses, track deliveries, and manage your orders in Enugu.',
+  openGraph: {
+    title: 'Sign In - Peekup',
+    description: 'Access your Peekup account to order and track deliveries.',
+    url: 'https://peekup.ng/login',
+    images: [{ url: '/seo/peekupseo.png', width: 1200, height: 630 }],
+  },
+  robots: {
+    index: false,
+    follow: true,
+  },
+  alternates: {
+    canonical: 'https://peekup.ng/login',
+  },
 }
 
 export default function Login() {

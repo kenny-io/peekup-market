@@ -1,7 +1,18 @@
+import { type Metadata } from 'next'
+
 import { Button } from '@/components/Button'
 import { CirclesBackground } from '@/components/CirclesBackground'
 import { Container } from '@/components/Container'
 import { Layout } from '@/components/Layout'
+
+export const metadata: Metadata = {
+  title: 'Page Not Found',
+  description: 'The page you are looking for does not exist. Return to Peekup homepage.',
+  robots: {
+    index: false,
+    follow: true,
+  },
+}
 
 export default function NotFound() {
   return (
