@@ -391,8 +391,8 @@ export default function GoPage() {
             <div className="flex-1">
               <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-gray-200 shadow-2xl">
                 <Image
-                  src="/images/peekup-go.png"
-                  alt="Peekup Go - Instant P2P delivery app with live tracking"
+                  src="/images/peekup-rider-in-transit.png"
+                  alt="Peekup Go rider delivering a package in Enugu"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"
