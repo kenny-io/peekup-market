@@ -69,8 +69,8 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: '/peekup-favicon.svg',
-    apple: '/peekup-favicon.svg',
+    icon: '/favicon.PNG',
+    apple: '/favicon.PNG',
   },
   manifest: '/site.webmanifest',
 }
