@@ -15,63 +15,63 @@ interface Review {
 
 const reviews: Array<Review> = [
   {
-    title: 'Reliable even when vendors lack dispatch',
-    body: 'Peekup riders walked into SPAR, grabbed everything on my list, and delivered in 25 minutes. First time I didn’t have to call three different riders.',
-    author: 'Chidinma · New Haven',
+    title: 'This will revolutionize Enugu',
+    body: 'I really like what the Peekup team is building. I believe it will revolutionize consumer behaviour in Enugu and unlock a lot of other opportunities.',
+    author: 'William · CEO, Hackmamba',
     rating: 5,
   },
   {
-    title: 'Easy checkout per vendor',
-    body: 'I placed a pharmacy order with a clear fee and paid on delivery. No juggling multiple vendors in one cart. Simple and fast.',
-    author: 'Tobe · Independence Layout',
+    title: 'Finally, a local-first solution',
+    body: "Enugu has needed something like this for years. The idea of riders buying in-store and delivering is brilliant. Can't wait to use it for my pharmacy runs.",
+    author: 'Adaeze · Pharmacist, GRA',
     rating: 5,
   },
   {
-    title: 'Night Ops saved my event',
-    body: 'Ordered ice and drinks at 1:10 AM, rider arrived in 20 minutes with receipts. Nightlife runs are now sorted.',
-    author: 'Ada · Enugu',
+    title: 'Excited for my restaurant',
+    body: "As a restaurant owner without delivery bikes, this is exactly what we've been waiting for. Peekup will help us reach more customers across Enugu.",
+    author: 'Chukwuemeka · Restaurant Owner',
     rating: 5,
   },
   {
-    title: 'Proof of delivery matters',
-    body: 'They shared photos and receipts when dropping at our office front desk. Finance reconciles faster now.',
-    author: 'Ugo · Corporate Ops',
+    title: 'The future of shopping here',
+    body: "I've been following Peekup's progress and the team is incredibly thoughtful. Live tracking and transparent pricing? This is how delivery should work.",
+    author: 'Ngozi · Tech Enthusiast',
     rating: 5,
   },
   {
-    title: 'No more “dispatch not available”',
-    body: 'Peekup riders just buy in-store and deliver. Restaurants without bikes can finally deliver consistently.',
-    author: 'Ngozi · Abakpa',
+    title: 'Game changer for offices',
+    body: "Our office spends hours coordinating deliveries from different vendors. Peekup's multi-vendor approach will save us so much time and hassle.",
+    author: 'Ify · Office Manager, Independence Layout',
     rating: 5,
   },
   {
-    title: 'Onboarding vendors quickly',
-    body: 'Shared our product sheet and got listed same day. Customers now find us without calling.',
-    author: 'Amaka · Pharmacy Owner',
+    title: 'Love the vision',
+    body: "The fact that they're starting with Enugu and building for our specific needs shows real understanding. Not just another copy-paste startup.",
+    author: 'Obinna · Software Developer',
     rating: 5,
   },
   {
-    title: 'Transparent pricing',
-    body: 'Delivery fee is clear before checkout. No surprises when the rider arrives.',
-    author: 'Emeka · GRA',
+    title: 'Perfect for night owls',
+    body: "As someone who works late, the promise of night operations is huge. Finally, I won't have to stress about getting essentials after hours.",
+    author: 'Ada · Event Planner',
     rating: 5,
   },
   {
-    title: 'Great for offices',
-    body: 'We do weekly stationery + water runs. Peekup groups the vendors and tracks each stop.',
-    author: 'Ify · Office Manager',
+    title: 'Great opportunity for vendors',
+    body: 'I run a small grocery store and reaching customers online has always been a challenge. Peekup will give small businesses like mine visibility.',
+    author: 'Amaka · Store Owner, Abakpa',
     rating: 5,
   },
   {
-    title: 'Smooth Android app',
-    body: 'Clean experience, quick search, and statuses feel real-time. Looking forward to iOS access.',
-    author: 'Somto · Enugu',
+    title: 'The app looks promising',
+    body: "Got an early look at the interface and it's clean and intuitive. Really looking forward to the full launch on Android and iOS.",
+    author: 'Somto · Product Designer',
     rating: 5,
   },
   {
-    title: 'Support responds fast',
-    body: 'I had a substitution request and they handled it mid-trip. Loved the communication.',
-    author: 'Chisom · Trans-Ekulu',
+    title: 'Supporting local innovation',
+    body: "It's refreshing to see a team building specifically for Enugu. The rider training and fleet management approach shows they're serious.",
+    author: 'Chisom · Entrepreneur, Trans-Ekulu',
     rating: 5,
   },
 ]
@@ -126,7 +126,7 @@ function Review({
     >
       <blockquote className="text-gray-900">
         <StarRating rating={rating} />
-        <p className="mt-4 text-lg/6 font-semibold before:content-['“'] after:content-['”']">
+        <p className="mt-4 text-lg/6 font-semibold before:content-['\201C'] after:content-['\201D']">
           {title}
         </p>
         <p className="mt-3 text-base/7">{body}</p>
@@ -258,10 +258,10 @@ export function Reviews() {
           id="reviews-title"
           className="text-3xl font-medium tracking-tight text-gray-900 sm:text-center"
         >
-          Enugu is already shopping with Peekup.
+          Enugu is excited about Peekup.
         </h2>
         <p className="mt-2 text-lg text-gray-600 sm:text-center">
-          Reliable delivery across food, grocery, pharmacy, and essentials. Day or night.
+          Here&apos;s what people are saying about what we&apos;re building.
         </p>
         <ReviewGrid />
       </Container>

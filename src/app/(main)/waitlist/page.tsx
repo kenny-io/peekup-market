@@ -83,13 +83,13 @@ export default function Waitlist() {
               <CheckIcon className="h-10 w-10 text-green-600" />
             </div>
             <h1 className="mt-8 text-3xl font-medium tracking-tight text-gray-900">
-              You're on the list!
+              You&apos;re on the list!
             </h1>
             <p className="mt-4 text-lg text-gray-600">
-              We will notify you as soon as Peekup launches on the app store.
+              You&apos;ve joined 550+ others waiting for Peekup to launch.
             </p>
             <p className="mt-6 text-sm text-gray-500">
-              Keep an eye on your inbox. In the meantime, explore what Peekup has to offer.
+              We&apos;ll notify you as soon as we&apos;re live on the app store. Keep an eye on your inbox!
             </p>
             <div className="mt-8">
               <Button href="/" color="primary">
@@ -112,11 +112,18 @@ export default function Waitlist() {
       <Container>
         <div className="mx-auto max-w-lg">
           <div className="text-center">
+            <div className="mx-auto mb-4 inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-1.5">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-orange-400 opacity-75"></span>
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-orange-500"></span>
+              </span>
+              <span className="text-sm font-semibold text-orange-700">550+ people already joined</span>
+            </div>
             <h1 className="text-3xl font-medium tracking-tight text-gray-900">
               Join the Waitlist
             </h1>
             <p className="mt-4 text-lg text-gray-600">
-              Be the first to know when Peekup launches on iOS and Android.
+              Join over 550 people already waiting for Peekup to launch on iOS and Android.
             </p>
           </div>
 
