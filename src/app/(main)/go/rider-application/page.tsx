@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
@@ -93,7 +94,7 @@ const benefits = [
   {
     icon: ShieldIcon,
     title: 'Full Protective Gear',
-    description: 'Complete safety equipment including helmet, reflective jacket, and protective gloves.',
+    description: 'Complete safety equipment including branded helmet, reflective jacket, and protective gloves.',
   },
   {
     icon: BikeIcon,
@@ -262,8 +263,8 @@ export default function RiderApplicationPage() {
               Please ensure your phone is reachable.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button href="/go" color="primary">
-                Back to Peekup Go
+              <Button href="/" color="primary">
+                Back to Peekup
               </Button>
               <Button href="/" variant="outline">
                 Back to Home
@@ -277,8 +278,8 @@ export default function RiderApplicationPage() {
 
   return (
     <>
-      {/* Hero Section */}
-      <section className="bg-gray-900 px-4 pb-16 pt-32 text-white">
+      {/* Hero Section with Rider Image */}
+      <section className="relative overflow-hidden bg-gray-900 px-4 pb-0 pt-32">
         <Container>
           <Link
             href="/go"
@@ -287,36 +288,159 @@ export default function RiderApplicationPage() {
             <ArrowLeftIcon className="mr-2 h-4 w-4" />
             Back to Peekup Go
           </Link>
-          <div className="max-w-3xl">
-            <div className="mb-6 inline-flex items-center space-x-2 rounded-full border border-orange-500/30 bg-orange-500/10 px-4 py-1.5">
-              <BikeIcon className="h-4 w-4 text-orange-400" />
-              <span className="font-mono text-xs font-semibold uppercase tracking-wide text-orange-400">
-                Now Hiring Riders
-              </span>
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            <div className="pb-16 lg:pb-24">
+              <div className="mb-6 inline-flex items-center space-x-2 rounded-full border border-orange-500/30 bg-orange-500/10 px-4 py-1.5">
+                <BikeIcon className="h-4 w-4 text-orange-400" />
+                <span className="font-mono text-xs font-semibold uppercase tracking-wide text-orange-400">
+                  Now Hiring Riders
+                </span>
+              </div>
+              <h1 className="mb-6 text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
+                Become a Peekup Rider
+              </h1>
+              <p className="max-w-xl text-xl font-medium leading-relaxed text-gray-300">
+                Join our team of delivery riders and earn competitive income while serving the Enugu community. 
+                We provide everything you need to succeed.
+              </p>
+              <div className="mt-8">
+                <Button href="#apply" color="primary" className="text-base">
+                  Apply Now
+                </Button>
+              </div>
             </div>
-            <h1 className="mb-6 text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
-              Become a Peekup Rider
-            </h1>
-            <p className="max-w-2xl text-xl font-medium leading-relaxed text-gray-300">
-              Join our team of delivery riders and earn competitive income while serving the Enugu community. 
-              We provide everything you need to succeed.
-            </p>
+            <div className="relative hidden lg:block">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-t-3xl">
+                <Image
+                  src="/images/peekup-rider-in-full-gear.png"
+                  alt="Peekup Rider in full branded gear with motorcycle"
+                  fill
+                  className="object-cover object-top"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent" />
+              </div>
+            </div>
           </div>
         </Container>
+        {/* Mobile hero image */}
+        <div className="relative mt-8 aspect-[16/10] w-full overflow-hidden lg:hidden">
+          <Image
+            src="/images/peekup-rider-in-full-gear.png"
+            alt="Peekup Rider in full branded gear with motorcycle"
+            fill
+            className="object-cover object-top"
+            sizes="100vw"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent" />
+        </div>
       </section>
 
-      {/* Benefits Section */}
+      {/* Fleet Section - Full Width Image */}
+      <section className="relative">
+        <div className="relative aspect-[21/9] w-full overflow-hidden">
+          <Image
+            src="/images/peekup-bike-fleet.png"
+            alt="Peekup bike fleet ready for delivery"
+            fill
+            className="object-cover"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-gray-900/80 via-gray-900/40 to-transparent" />
+          <div className="absolute inset-0 flex items-center">
+            <Container>
+              <div className="max-w-lg">
+                <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+                  Join the Fleet
+                </h2>
+                <p className="mt-4 text-lg text-gray-200">
+                  Be part of Enugu&apos;s fastest-growing delivery network. Over 200 riders and counting.
+                </p>
+              </div>
+            </Container>
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits Section with Gear Images */}
       <section className="bg-white px-4 py-20">
         <Container>
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              What We Offer
+              What We Provide
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-gray-700">
               We invest in our riders because your success is our success.
             </p>
           </div>
-          <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+
+          {/* Gear Showcase */}
+          <div className="mt-16 grid gap-8 lg:grid-cols-3">
+            {/* Helmet Card */}
+            <div className="group relative overflow-hidden rounded-3xl bg-gray-900">
+              <div className="aspect-[4/3] overflow-hidden">
+                <Image
+                  src="/images/peekup-helmet.jpg"
+                  alt="Peekup branded safety helmet"
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  sizes="(max-width: 1024px) 100vw, 33vw"
+                />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/20 to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 p-6">
+                <h3 className="text-xl font-bold text-white">Branded Helmet</h3>
+                <p className="mt-2 text-sm text-gray-300">
+                  Premium safety helmet with Peekup branding for maximum visibility and protection.
+                </p>
+              </div>
+            </div>
+
+            {/* Jacket Card */}
+            <div className="group relative overflow-hidden rounded-3xl bg-gray-900">
+              <div className="aspect-[4/3] overflow-hidden">
+                <Image
+                  src="/images/peekup-rider-jacket.png"
+                  alt="Peekup rider jacket with Logistics Pilot branding"
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  sizes="(max-width: 1024px) 100vw, 33vw"
+                />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/20 to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 p-6">
+                <h3 className="text-xl font-bold text-white">Rider Jacket</h3>
+                <p className="mt-2 text-sm text-gray-300">
+                  High-visibility reflective jacket with &quot;Logistics Pilot&quot; branding for safety.
+                </p>
+              </div>
+            </div>
+
+            {/* Bike Card */}
+            <div className="group relative overflow-hidden rounded-3xl bg-gray-900">
+              <div className="aspect-[4/3] overflow-hidden">
+                <Image
+                  src="/images/peekup-rider-in-transit.png"
+                  alt="Peekup rider on delivery bike in transit"
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  sizes="(max-width: 1024px) 100vw, 33vw"
+                />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/20 to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 p-6">
+                <h3 className="text-xl font-bold text-white">Equipped Bike</h3>
+                <p className="mt-2 text-sm text-gray-300">
+                  Modern delivery bike with navigation tech and insulated delivery box.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Benefits Grid */}
+          <div className="mt-20 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {benefits.map((benefit) => (
               <div
                 key={benefit.title}
@@ -336,31 +460,40 @@ export default function RiderApplicationPage() {
       {/* Requirements Section */}
       <section className="border-t border-gray-100 bg-gray-50 px-4 py-20">
         <Container>
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              Requirements
-            </h2>
-            <p className="mt-4 text-lg leading-relaxed text-gray-700">
-              We&apos;re looking for dedicated individuals who meet these criteria.
-            </p>
-          </div>
-          <div className="mx-auto mt-12 max-w-xl">
-            <ul className="space-y-4">
-              {requirements.map((requirement, index) => (
-                <li key={index} className="flex items-start gap-3">
-                  <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-orange-100">
-                    <CheckIcon className="h-4 w-4 text-orange-600" />
-                  </div>
-                  <span className="text-gray-700">{requirement}</span>
-                </li>
-              ))}
-            </ul>
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            <div>
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                Requirements
+              </h2>
+              <p className="mt-4 text-lg leading-relaxed text-gray-700">
+                We&apos;re looking for dedicated individuals who meet these criteria.
+              </p>
+              <ul className="mt-8 space-y-4">
+                {requirements.map((requirement, index) => (
+                  <li key={index} className="flex items-start gap-3">
+                    <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-orange-100">
+                      <CheckIcon className="h-4 w-4 text-orange-600" />
+                    </div>
+                    <span className="text-gray-700">{requirement}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-2xl">
+              <Image
+                src="/images/peekup-rider-in-transit.png"
+                alt="Peekup rider making a delivery"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
           </div>
         </Container>
       </section>
 
       {/* Application Form Section */}
-      <section className="relative overflow-hidden bg-white px-4 py-20">
+      <section id="apply" className="scroll-mt-20 bg-white px-4 py-20">
         <Container>
           <div className="mx-auto max-w-2xl">
             <div className="text-center">
@@ -655,7 +788,14 @@ export default function RiderApplicationPage() {
             </div>
 
             <p className="mt-6 text-center text-xs text-gray-500">
-              By submitting this application, you agree to our Terms of Service and Privacy Policy.
+              By submitting this application, you agree to our{' '}
+              <Link href="/terms" className="text-orange-600 hover:text-orange-700 underline">
+                Terms of Service
+              </Link>{' '}
+              and{' '}
+              <Link href="/privacy" className="text-orange-600 hover:text-orange-700 underline">
+                Privacy Policy
+              </Link>.
               Your information will be used solely for the purpose of processing your rider application.
             </p>
           </div>
@@ -673,7 +813,7 @@ export default function RiderApplicationPage() {
               Contact our recruitment team for more information about becoming a Peekup Rider.
             </p>
             <p className="mt-2 text-orange-400">
-              riders@peekup.ng | 0800-PEEKUP-GO
+              riders@usepeekup.com | 08038927241
             </p>
           </div>
         </Container>

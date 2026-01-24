@@ -54,9 +54,19 @@ export function Footer() {
         </div>
         <div className="flex flex-col items-center border-t border-gray-200 pt-8 pb-12 md:flex-row-reverse md:justify-between md:pt-6">
           <NewsletterForm />
-          <p className="mt-6 text-sm text-gray-500 md:mt-0">
-            &copy; Copyright {new Date().getFullYear()}. All rights reserved.
-          </p>
+          <div className="mt-6 flex flex-col items-center gap-4 md:mt-0 md:flex-row md:gap-6">
+            <p className="text-sm text-gray-500">
+              &copy; Copyright {new Date().getFullYear()}. All rights reserved.
+            </p>
+            <div className="flex gap-4 text-sm">
+              <Link href="/terms" className="text-gray-500 hover:text-orange-600">
+                Terms of Service
+              </Link>
+              <Link href="/privacy" className="text-gray-500 hover:text-orange-600">
+                Privacy Policy
+              </Link>
+            </div>
+          </div>
         </div>
       </Container>
     </footer>
