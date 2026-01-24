@@ -1,9 +1,13 @@
+'use client'
+
 import { useId } from 'react'
 import Image from 'next/image'
 
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
 import { PhoneFrame } from '@/components/PhoneFrame'
+import { TrackedLink } from '@/components/TrackedLink'
+import { trackDownloadPeekup, trackBecomeRider } from '@/lib/analytics'
 
 function BackgroundIllustration(props: React.ComponentPropsWithoutRef<'div'>) {
   let id = useId()
@@ -87,12 +91,24 @@ export function Hero() {
             Order food, groceries, pharmacy items, water, and electronics from trusted Enugu vendors. Peekup riders buy in-store and deliver to your doorstep with live updates from pickup to delivery.
             </p>
             <div className="mt-8 flex flex-wrap gap-x-6 gap-y-4">
-              <Button href="/waitlist" color="primary">
+              <Button
+                href="/waitlist"
+                color="soft"
+                onClick={() => trackDownloadPeekup('hero')}
+              >
                 Download Peekup
               </Button>
-              <Button href="/register" variant="outline">
-                Become a Vendor
-              </Button>
+              <TrackedLink
+                href="/go/rider-application"
+                trackingName="become_rider"
+                trackingLocation="hero"
+                trackingType="rider"
+                className="group relative inline-flex h-[50px] items-center justify-center overflow-hidden rounded-[16px] px-6 text-sm font-semibold tracking-tight transition-all"
+              >
+                <span className="absolute inset-0 rounded-[16px] bg-gradient-to-r from-orange-500 via-pink-500 to-orange-500 bg-[length:200%_100%] animate-shimmer" />
+                <span className="absolute inset-[2px] rounded-[14px] bg-white transition-colors group-hover:bg-orange-50" />
+                <span className="relative text-gray-900">Become a Peekup Rider</span>
+              </TrackedLink>
             </div>
           </div>
           <div className="relative mt-10 sm:mt-20 lg:col-span-5 lg:row-span-2 lg:mt-0 xl:col-span-6">
@@ -112,11 +128,18 @@ export function Hero() {
           </div>
           <div className="relative -mt-4 lg:col-span-7 lg:mt-0 xl:col-span-6">
             <p className="text-center text-sm font-semibold text-gray-900 lg:text-left">
-              Launch vendors
+              Launch partners
             </p>
-            <p className="mt-4 text-center text-sm text-gray-600 lg:text-left">
-              Ntachi Osa • Crunchies • SPAR • Kilimanjaro • Apollo Pharmacy • and more
-            </p>
+            <div className="relative mt-4">
+              <p className="select-none text-center text-sm text-gray-600 blur-[6px] lg:text-left">
+                Ntachi Osa • Crunchies • SPAR • Kilimanjaro • Apollo Pharmacy • and more
+              </p>
+              <div className="absolute inset-0 flex items-center justify-center lg:justify-start">
+                <span className="rounded-full bg-orange-100 px-3 py-1 text-xs font-semibold text-orange-600">
+                  Reveal coming soon
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </Container>

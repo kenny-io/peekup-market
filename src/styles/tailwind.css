@@ -37,6 +37,7 @@
   --animate-spin-reverse: spin-reverse 1s linear infinite;
   --animate-spin-reverse-slow: spin-reverse 4s linear infinite;
   --animate-spin-reverse-slower: spin-reverse 6s linear infinite;
+  --animate-shimmer: shimmer 2s linear infinite;
 
   --radius-4xl: 2rem;
   --radius-5xl: 2.5rem;
@@ -87,6 +88,14 @@
   @keyframes spin-reverse {
     to {
       transform: rotate(-360deg);
+    }
+  }
+  @keyframes shimmer {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
     }
   }
 }
