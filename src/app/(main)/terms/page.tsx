@@ -112,7 +112,7 @@ export default function TermsOfServicePage() {
               <h2 className="text-xl font-semibold text-gray-900">5. Payments and Pricing</h2>
               <div className="mt-4 space-y-4 text-gray-600 leading-relaxed">
                 <p>
-                  All prices displayed on the Platform are in Nigerian Naira (₦). Delivery fees are calculated based on distance and package size. Payment can be made through supported methods including card payments, bank transfers, and cash on delivery where available.
+                  All prices displayed on the Platform are in Nigerian Naira (₦). Delivery fees are calculated based on distance and package size. Payment can be made through supported methods including wallet, card payment and bank transfers.
                 </p>
                 <p>
                   By placing an order, you authorize Peekup to charge your selected payment method for the total order amount including product costs, delivery fees, and any applicable service charges.

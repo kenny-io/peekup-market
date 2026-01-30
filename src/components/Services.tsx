@@ -20,7 +20,7 @@ const services: Array<ServiceOption> = [
     featured: false,
     tagline: 'Shop & deliver',
     description:
-      'Browse Enugu vendors, add items to your cart, and let Peekup riders buy and deliver to your door. Pay on delivery.',
+      'Browse Enugu vendors, add items to your cart, and let Peekup riders buy and deliver to your door. Pay upfront at checkout.',
     button: {
       label: 'Download Peekup',
       href: '/waitlist',

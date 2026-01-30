@@ -17,7 +17,7 @@ export function CallToAction() {
             Download Peekup Marketplace
           </h2>
           <p className="mt-4 text-lg text-gray-300">
-            Shop Enugu vendors in one app, pay on delivery, and track your order in real time. Android live now. iOS coming soon.
+            Shop Enugu vendors in one app, pay at checkout, and track your order in real time. Android and iOS coming soon.
           </p>
           <div className="mt-8 flex justify-center">
             <AppStoreLink color="white" />
