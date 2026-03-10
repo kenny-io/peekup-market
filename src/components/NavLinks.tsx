@@ -14,6 +14,7 @@ export function NavLinks() {
     ['Peekup Go', '/go'],
     ['Business', '/business'],
     ['Vendors', '/vendors'],
+    ['About', '/about'],
     ['FAQs', '/#faqs'],
   ].map(([label, href], index) => (
     <Link
