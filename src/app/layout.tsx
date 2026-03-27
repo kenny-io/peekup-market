@@ -1,5 +1,6 @@
 import { type Metadata } from 'next'
 import '@/styles/tailwind.css'
+import { GoogleAnalyticsScripts } from '@/components/GoogleAnalyticsScripts'
 import { GoogleAnalytics } from '@/components/GoogleAnalytics'
 
 const siteUrl = 'https://peekup.ng'
@@ -83,6 +84,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="bg-gray-50 text-gray-900 antialiased font-sans">
       <body>
+        <GoogleAnalyticsScripts />
         <GoogleAnalytics />
         {children}
       </body>
