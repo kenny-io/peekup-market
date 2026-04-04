@@ -55,6 +55,24 @@ function MobileNavLink(
   )
 }
 
+function MobileNavLinkMuted({
+  href,
+  children,
+}: {
+  href: string
+  children: React.ReactNode
+}) {
+  return (
+    <PopoverButton
+      as={Link}
+      href={href}
+      className="block text-base/7 tracking-tight text-gray-700/40"
+    >
+      {children}
+    </PopoverButton>
+  )
+}
+
 export function Header() {
   return (
     <header>
@@ -114,14 +132,14 @@ export function Header() {
                             <MobileNavLink href="/#services">
                               Services
                             </MobileNavLink>
-                            <MobileNavLink href="/business">
+                            <MobileNavLinkMuted href="/go">
+                              Peekup Go
+                            </MobileNavLinkMuted>
+                            <MobileNavLinkMuted href="/business">
                               Business
-                            </MobileNavLink>
+                            </MobileNavLinkMuted>
                             <MobileNavLink href="/vendors">
                               Vendors
-                            </MobileNavLink>
-                            <MobileNavLink href="/about">
-                              About
                             </MobileNavLink>
                             <MobileNavLink href="/#faqs">FAQs</MobileNavLink>
                           </div>

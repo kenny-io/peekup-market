@@ -86,7 +86,7 @@ export default function Waitlist() {
               You&apos;re on the list!
             </h1>
             <p className="mt-4 text-lg text-gray-600">
-              You&apos;ve joined 550+ others waiting for Peekup to launch.
+              You&apos;ve joined 1,500+ others waiting for Peekup to launch.
             </p>
             <p className="mt-6 text-sm text-gray-500">
               We&apos;ll notify you as soon as we&apos;re live on the app store. Keep an eye on your inbox!
@@ -117,13 +117,13 @@ export default function Waitlist() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-orange-400 opacity-75"></span>
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-orange-500"></span>
               </span>
-              <span className="text-sm font-semibold text-orange-700">550+ people already joined</span>
+              <span className="text-sm font-semibold text-orange-700">1,500+ people already joined</span>
             </div>
             <h1 className="text-3xl font-medium tracking-tight text-gray-900">
               Join the Waitlist
             </h1>
             <p className="mt-4 text-lg text-gray-600">
-              Join over 550 people already waiting for Peekup to launch on iOS and Android.
+              Join over 1,500 people already waiting for Peekup to launch on iOS and Android.
             </p>
           </div>
 
