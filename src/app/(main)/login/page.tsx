@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Sign In - Peekup',
     description: 'Access your Peekup account to order and track deliveries.',
-    url: 'https://peekup.ng/login',
+    url: 'https://usepeekup.com/login',
     images: [{ url: '/seo/peekupseo.png', width: 1200, height: 630 }],
   },
   robots: {
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   alternates: {
-    canonical: 'https://peekup.ng/login',
+    canonical: 'https://usepeekup.com/login',
   },
 }
 

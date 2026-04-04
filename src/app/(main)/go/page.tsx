@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     title: 'Peekup Go - Instant P2P Delivery in Enugu',
     description:
       'Send packages across Enugu with real-time tracking, transparent pricing, and insured deliveries.',
-    url: 'https://peekup.ng/go',
+    url: 'https://usepeekup.com/go',
     images: [{ url: '/seo/peekupseo.png', width: 1200, height: 630 }],
   },
   twitter: {
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     images: ['/seo/peekupseo.png'],
   },
   alternates: {
-    canonical: 'https://peekup.ng/go',
+    canonical: 'https://usepeekup.com/go',
   },
 }
 
