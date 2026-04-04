@@ -1,14 +1,13 @@
 'use client'
 
 import Image from 'next/image'
-import { Fragment, useEffect, useId, useRef, useState } from 'react'
-import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
+import { useEffect, useId, useRef, useState } from 'react'
+import { Tab, TabGroup, TabList } from '@headlessui/react'
 import clsx from 'clsx'
 import { motion } from 'framer-motion'
 
 import { CircleBackground } from '@/components/CircleBackground'
 import { Container } from '@/components/Container'
-import { PhoneFrame } from '@/components/PhoneFrame'
 
 const features = [
   {
@@ -16,21 +15,18 @@ const features = [
     description:
       'Order food, groceries, drinks, medicine, and more from local stores you already know.',
     icon: DeviceUserIcon,
-    screen: InviteScreen,
   },
   {
     name: 'Fast Delivery',
     description:
       'A Peekup rider accepts your order, buys your items, and delivers to your doorstep.',
     icon: DeviceNotificationIcon,
-    screen: StocksScreen,
   },
   {
     name: 'Tracked Order Status',
     description:
       'Follow your order from PLACED → RIDER ACCEPTED → SHOPPING → ON THE WAY → DELIVERED with alerts that keep you in control at all times.',
     icon: DeviceTouchIcon,
-    screen: InvestScreen,
   },
 ]
 
@@ -115,42 +111,6 @@ function DeviceTouchIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   )
 }
 
-function InviteScreen() {
-  return (
-    <Image
-      src="/mockup2.png"
-      alt="Peekup app mockup"
-      width={366}
-      height={740}
-      className="h-auto w-full"
-      priority
-    />
-  )
-}
-
-function StocksScreen() {
-  return (
-    <Image
-      src="/mockup2.png"
-      alt="Peekup app mockup"
-      width={366}
-      height={740}
-      className="h-auto w-full"
-    />
-  )
-}
-
-function InvestScreen() {
-  return (
-    <Image
-      src="/mockup2.png"
-      alt="Peekup app mockup"
-      width={366}
-      height={740}
-      className="h-auto w-full"
-    />
-  )
-}
 
 function FeaturesDesktop() {
   let [selectedIndex, setSelectedIndex] = useState(0)
@@ -195,19 +155,13 @@ function FeaturesDesktop() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
           <CircleBackground color="#f97316" className="animate-spin-slower" />
         </div>
-        <PhoneFrame className="z-10 mx-auto w-full max-w-[366px]">
-          <TabPanels as={Fragment}>
-            {features.map((feature) => (
-              <TabPanel
-                static
-                key={feature.name}
-                className="col-start-1 row-start-1 flex focus:outline-offset-32 data-selected:not-data-focus:outline-hidden"
-              >
-                <feature.screen />
-              </TabPanel>
-            ))}
-          </TabPanels>
-        </PhoneFrame>
+        <Image
+          src="/mockup2-portrait.png"
+          alt="Peekup app cart screen showing items from Crunchies with pricing breakdown"
+          width={300}
+          height={615}
+          className="relative z-10 mx-auto h-auto w-full max-w-[300px] drop-shadow-2xl"
+        />
       </div>
     </TabGroup>
   )
@@ -268,9 +222,13 @@ function FeaturesMobile() {
                   className={featureIndex % 2 === 1 ? 'rotate-180' : undefined}
                 />
               </div>
-              <PhoneFrame className="relative mx-auto w-full max-w-[366px]">
-                <feature.screen />
-              </PhoneFrame>
+              <Image
+                src="/mockup2-portrait.png"
+                alt="Peekup app cart screen showing items from Crunchies with pricing breakdown"
+                width={300}
+                height={615}
+                className="relative mx-auto h-auto w-full max-w-[300px] drop-shadow-2xl"
+              />
               <div className="absolute inset-x-0 bottom-0 bg-gray-800/95 p-6 backdrop-blur-sm sm:p-10">
                 <feature.icon className="h-8 w-8" />
                 <h3 className="mt-6 text-sm font-semibold text-white sm:text-lg">
