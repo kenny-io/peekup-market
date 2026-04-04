@@ -199,23 +199,26 @@ export function SecondaryFeatures() {
             Built for everyday orders in Enugu.
           </h2>
           <p className="mt-2 text-lg text-gray-600">
-            Peekup makes any vendor deliverable, even without a dispatch bike. You order your needs, your rider buys in-store, and you stay informed every step of the way until delivery to your doorstep.
+            Peekup makes any vendor deliverable, even without a dispatch bike.
+            You order your needs, your rider buys in-store, and you stay
+            informed every step of the way until delivery to your doorstep.
           </p>
         </div>
         <ul
           role="list"
-          className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 text-sm sm:mt-20 sm:grid-cols-2 md:gap-y-10 lg:max-w-none lg:grid-cols-3"
+          className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:mt-20 sm:grid-cols-2 md:gap-y-10 lg:max-w-none lg:grid-cols-3"
         >
           {features.map((feature) => (
             <li
               key={feature.name}
-              className="rounded-2xl border border-gray-200 p-8"
+              className="group relative rounded-2xl border border-gray-200 bg-white p-8 transition-all hover:border-orange-200 hover:shadow-lg hover:shadow-orange-600/5"
             >
+              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-orange-400 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
               <feature.icon className="h-8 w-8" />
               <h3 className="mt-6 font-semibold text-gray-900">
                 {feature.name}
               </h3>
-              <p className="mt-2 text-gray-700">{feature.description}</p>
+              <p className="mt-2 text-sm text-gray-700">{feature.description}</p>
             </li>
           ))}
         </ul>

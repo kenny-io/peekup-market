@@ -75,7 +75,7 @@ export function Faqs() {
             If you have anything else you want to ask,{' '}
             <Link
               href="/register"
-              className="text-orange-600 underline hover:text-orange-700"
+              className="text-orange-600 underline underline-offset-2 hover:text-orange-700"
             >
               reach out to us
             </Link>
@@ -88,13 +88,16 @@ export function Faqs() {
         >
           {faqs.map((column, columnIndex) => (
             <li key={columnIndex}>
-              <ul role="list" className="space-y-10">
+              <ul role="list" className="space-y-6">
                 {column.map((faq, faqIndex) => (
-                  <li key={faqIndex}>
-                    <h3 className="text-lg/6 font-semibold text-gray-900">
+                  <li
+                    key={faqIndex}
+                    className="rounded-2xl border border-gray-200/80 bg-white p-6 transition-colors hover:border-gray-300"
+                  >
+                    <h3 className="text-base/6 font-semibold text-gray-900">
                       {faq.question}
                     </h3>
-                    <p className="mt-4 text-sm text-gray-700">{faq.answer}</p>
+                    <p className="mt-3 text-sm leading-relaxed text-gray-600">{faq.answer}</p>
                   </li>
                 ))}
               </ul>

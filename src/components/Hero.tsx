@@ -5,8 +5,7 @@ import Image from 'next/image'
 
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
-import { TrackedLink } from '@/components/TrackedLink'
-import { trackDownloadPeekup, trackBecomeRider } from '@/lib/analytics'
+import { trackDownloadPeekup } from '@/lib/analytics'
 
 function BackgroundIllustration(props: React.ComponentPropsWithoutRef<'div'>) {
   let id = useId()
@@ -83,33 +82,60 @@ export function Hero() {
       <Container>
         <div className="lg:grid lg:grid-cols-12 lg:gap-x-8 lg:gap-y-20">
           <div className="relative z-10 mx-auto max-w-2xl lg:col-span-7 lg:max-w-none lg:pt-6 xl:col-span-6">
-            <h1 className="text-4xl font-semibold tracking-tight text-gray-900">
-              Shop from Enugu’s best stores <br /> <span >in one app</span> <br /> <span className="text-orange-600">Delivered fast</span>
+            <h1 className="text-[2.5rem] font-bold leading-[1.15] tracking-tight text-gray-900 sm:text-5xl">
+              Shop from Enugu&apos;s
+              <br />
+              best stores in one app.
+              <br />
+              <span className="text-orange-600">Delivered fast.</span>
             </h1>
-            <p className="mt-6 text-lg text-gray-600">
-            Order food, groceries, pharmacy items, water, and electronics from trusted Enugu vendors. Peekup riders buy in-store and deliver to your doorstep with live updates from pickup to delivery.
+            <p className="mt-6 max-w-lg text-lg leading-relaxed text-gray-600">
+              Order food, groceries, pharmacy items, water, and electronics from
+              trusted Enugu vendors. Peekup riders buy in-store and deliver to
+              your doorstep with live updates.
             </p>
-            <div className="mt-8 flex flex-wrap gap-x-6 gap-y-4">
+
+            <div className="mt-10 flex flex-wrap items-center gap-x-5 gap-y-4">
               <Button
                 href="/waitlist"
-                color="soft"
+                color="primary"
                 onClick={() => trackDownloadPeekup('hero')}
               >
                 Download Peekup
               </Button>
-              <TrackedLink
-                href="/go/rider-application"
-                trackingName="become_rider"
-                trackingLocation="hero"
-                trackingType="rider"
-                className="group relative inline-flex h-[50px] items-center justify-center overflow-hidden rounded-[16px] px-6 text-sm font-semibold tracking-tight transition-all"
-              >
-                <span className="absolute inset-0 rounded-[16px] bg-gradient-to-r from-orange-500 via-pink-500 to-orange-500 bg-[length:200%_100%] animate-shimmer" />
-                <span className="absolute inset-[2px] rounded-[14px] bg-white transition-colors group-hover:bg-orange-50" />
-                <span className="relative text-gray-900">Become a Peekup Rider</span>
-              </TrackedLink>
+              <Button href="/vendors" color="soft">
+                Become a vendor
+              </Button>
+            </div>
+
+            {/* Social proof */}
+            <div className="mt-10 flex items-center gap-4">
+              <div className="flex -space-x-2">
+                {[
+                  'bg-orange-400',
+                  'bg-gray-900',
+                  'bg-orange-600',
+                  'bg-gray-700',
+                ].map((bg, i) => (
+                  <div
+                    key={i}
+                    className={`flex h-8 w-8 items-center justify-center rounded-full ${bg} ring-2 ring-gray-50 text-[10px] font-bold text-white`}
+                  >
+                    {['AO', 'CK', 'NG', 'IF'][i]}
+                  </div>
+                ))}
+              </div>
+              <div>
+                <p className="text-sm font-semibold text-gray-900">
+                  1,500+ people on the waitlist
+                </p>
+                <p className="text-xs text-gray-500">
+                  Join Enugu&apos;s fastest-growing marketplace
+                </p>
+              </div>
             </div>
           </div>
+
           <div className="relative mt-10 sm:mt-20 lg:col-span-5 lg:row-span-2 lg:mt-0 xl:col-span-6">
             <BackgroundIllustration className="absolute top-4 left-1/2 h-[1026px] w-[1026px] -translate-x-1/3 mask-[linear-gradient(to_bottom,white_20%,transparent_75%)] stroke-gray-300/70 sm:top-16 sm:-translate-x-1/2 lg:-top-16 lg:ml-12 xl:-top-14 xl:ml-0" />
             <div className="-mx-4 h-[448px] mask-[linear-gradient(to_bottom,white_60%,transparent)] px-9 sm:mx-0 lg:absolute lg:-inset-x-10 lg:-top-10 lg:-bottom-20 lg:h-auto lg:px-0 lg:pt-10 xl:-bottom-32">
@@ -123,6 +149,7 @@ export function Hero() {
               />
             </div>
           </div>
+
           <div className="relative -mt-4 lg:col-span-7 lg:mt-0 xl:col-span-6">
             <p className="text-center text-sm font-semibold text-gray-900 lg:text-left">
               Launch partners
