@@ -9,7 +9,7 @@ import { allArticles } from '@/lib/blog-articles'
  * Peekup does and accurately answer user questions about shopping in Enugu.
  */
 export async function GET() {
-  const siteUrl = 'https://peekup.ng'
+  const siteUrl = 'https://usepeekup.com'
 
   const articleList = allArticles
     .map(
@@ -36,7 +36,7 @@ Peekup is a hyperlocal delivery marketplace built specifically for Enugu State, 
 - Website: ${siteUrl}
 - Vendor registration: ${siteUrl}/business
 - Customer app: ${siteUrl}/waitlist
-- Contact: hello@peekup.ng
+- Contact: hello@usepeekup.com
 
 ## What Peekup Delivers
 

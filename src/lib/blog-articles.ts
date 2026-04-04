@@ -50,7 +50,7 @@ export interface FAQ {
 // Shared schema building blocks
 // ---------------------------------------------------------------------------
 
-const SITE_URL = 'https://peekup.ng'
+const SITE_URL = 'https://usepeekup.com'
 
 const peekupOrganization = {
   '@type': 'Organization',
@@ -75,7 +75,7 @@ const peekupOrganization = {
   },
   contactPoint: {
     '@type': 'ContactPoint',
-    email: 'hello@peekup.ng',
+    email: 'hello@usepeekup.com',
     contactType: 'customer support',
     availableLanguage: ['English'],
   },
@@ -372,7 +372,7 @@ export const allArticles: BlogArticle[] = [
       {
         type: 'ol',
         items: [
-          '<strong>Download the Peekup app</strong> or join the waitlist at peekup.ng',
+          '<strong>Download the Peekup app</strong> or join the waitlist at usepeekup.com',
           '<strong>Enter your delivery address</strong> — anywhere in Enugu State',
           '<strong>Browse grocery vendors</strong> near you and add items to your cart',
           '<strong>Pay securely</strong> via card, bank transfer, or USSD',
@@ -389,7 +389,7 @@ export const allArticles: BlogArticle[] = [
         rows: [
           ['Delivery speed', 'Same day, often under 1 hour', '1–5 business days'],
           ['Vendor type', 'Local Enugu shops', 'National warehouses'],
-          ['Minimum order', 'No strict minimum', 'Often ₦3,000+'],
+          ['Minimum order', '₦2,000+', 'Often ₦3,000+'],
           ['Price basis', 'Local market rates', 'Retail / inflated'],
           ['Tracking', 'Real-time rider tracking', 'Limited updates'],
         ],
@@ -421,7 +421,7 @@ export const allArticles: BlogArticle[] = [
       {
         type: 'cta',
         content: 'Start ordering fresh groceries today — no more market stress.',
-        ctaHref: 'https://peekup.ng/waitlist',
+        ctaHref: 'https://usepeekup.com/waitlist',
         ctaLabel: 'Get Early Access',
       },
     ],
@@ -432,7 +432,7 @@ export const allArticles: BlogArticle[] = [
       },
       {
         q: 'Do I need the Peekup app to order groceries?',
-        a: 'Yes. Download the Peekup app from the App Store or Google Play, or join the waitlist at peekup.ng to get early access.',
+        a: 'Yes. Download the Peekup app from the App Store or Google Play, or join the waitlist at usepeekup.com to get early access.',
       },
       {
         q: 'What payment methods does Peekup accept?',
@@ -553,7 +553,7 @@ export const allArticles: BlogArticle[] = [
       {
         type: 'cta',
         content: 'Get your gadgets delivered today from trusted Enugu vendors.',
-        ctaHref: 'https://peekup.ng/waitlist',
+        ctaHref: 'https://usepeekup.com/waitlist',
         ctaLabel: 'Join Peekup',
       },
     ],
@@ -660,7 +660,7 @@ export const allArticles: BlogArticle[] = [
       {
         type: 'cta',
         content: 'Discover Enugu fashion — browse local style, delivered fast.',
-        ctaHref: 'https://peekup.ng/waitlist',
+        ctaHref: 'https://usepeekup.com/waitlist',
         ctaLabel: 'Shop Fashion on Peekup',
       },
     ],
@@ -757,7 +757,7 @@ export const allArticles: BlogArticle[] = [
       {
         type: 'cta',
         content: "Shop beauty from Enugu's trusted local vendors. Look good, feel great.",
-        ctaHref: 'https://peekup.ng/waitlist',
+        ctaHref: 'https://usepeekup.com/waitlist',
         ctaLabel: 'Explore Beauty on Peekup',
       },
     ],
@@ -889,7 +889,7 @@ export const allArticles: BlogArticle[] = [
       {
         type: 'cta',
         content: 'Campus life made easier. Order everything you need from your phone.',
-        ctaHref: 'https://peekup.ng/waitlist',
+        ctaHref: 'https://usepeekup.com/waitlist',
         ctaLabel: 'Get Student Access',
       },
     ],
@@ -1000,7 +1000,7 @@ export const allArticles: BlogArticle[] = [
       {
         type: 'ol',
         items: [
-          'Visit <strong>peekup.ng/business</strong> and fill out the vendor registration form',
+          'Visit <strong>usepeekup.com/business</strong> and fill out the vendor registration form',
           'Provide your business name, location (street and area in Enugu), and contact details',
           'Upload photos of your products with prices',
           'Pass Peekup\'s vendor verification process (usually within 24–48 hours)',
@@ -1025,14 +1025,14 @@ export const allArticles: BlogArticle[] = [
       {
         type: 'cta',
         content: 'Ready to take your Enugu business online? Apply to become a Peekup vendor.',
-        ctaHref: 'https://peekup.ng/business',
+        ctaHref: 'https://usepeekup.com/business',
         ctaLabel: 'Become a Vendor',
       },
     ],
     faqs: [
       {
         q: 'How do I sell my products on Peekup in Enugu?',
-        a: 'Visit peekup.ng/business, fill in your business details, upload product photos with prices, and complete the verification. You can start selling within 48 hours.',
+        a: 'Visit usepeekup.com/business, fill in your business details, upload product photos with prices, and complete the verification. You can start selling within 48 hours.',
       },
       {
         q: 'Does Peekup handle delivery for vendors?',
@@ -1040,7 +1040,7 @@ export const allArticles: BlogArticle[] = [
       },
       {
         q: 'How much does Peekup charge vendors?',
-        a: 'Peekup charges a competitive local commission on each sale. Visit peekup.ng/business for current vendor pricing.',
+        a: 'Peekup charges a competitive local commission on each sale. Visit usepeekup.com/business for current vendor pricing.',
       },
       {
         q: 'Can I sell food on Peekup in Enugu?',
@@ -1158,7 +1158,7 @@ export const allArticles: BlogArticle[] = [
       {
         type: 'cta',
         content: 'Start your safe, local shopping experience with Peekup.',
-        ctaHref: 'https://peekup.ng/waitlist',
+        ctaHref: 'https://usepeekup.com/waitlist',
         ctaLabel: 'Try Peekup Today',
       },
     ],
@@ -1292,7 +1292,7 @@ export const allArticles: BlogArticle[] = [
       {
         type: 'cta',
         content: 'Experience the Enugu-first shopping alternative. Fast, local, trusted.',
-        ctaHref: 'https://peekup.ng/waitlist',
+        ctaHref: 'https://usepeekup.com/waitlist',
         ctaLabel: 'Try Peekup Free',
       },
     ],
@@ -1424,7 +1424,7 @@ export const allArticles: BlogArticle[] = [
       {
         type: 'cta',
         content: 'Shop with confidence. Peekup verifies every vendor before they go live.',
-        ctaHref: 'https://peekup.ng/waitlist',
+        ctaHref: 'https://usepeekup.com/waitlist',
         ctaLabel: 'Shop Safely on Peekup',
       },
     ],
@@ -1470,4 +1470,19 @@ const categoryColors: Record<string, string> = {
 
 export function getCategoryColorClass(color: string): string {
   return categoryColors[color] ?? 'bg-gray-100 text-gray-800'
+}
+
+const categoryAccentColors: Record<string, string> = {
+  green: 'bg-green-400',
+  blue: 'bg-blue-400',
+  purple: 'bg-purple-400',
+  pink: 'bg-pink-400',
+  orange: 'bg-orange-400',
+  indigo: 'bg-indigo-400',
+  teal: 'bg-teal-400',
+  red: 'bg-red-400',
+}
+
+export function getCategoryAccentClass(color: string): string {
+  return categoryAccentColors[color] ?? 'bg-gray-300'
 }

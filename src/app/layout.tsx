@@ -3,7 +3,7 @@ import '@/styles/tailwind.css'
 import { GoogleAnalyticsScripts } from '@/components/GoogleAnalyticsScripts'
 import { GoogleAnalytics } from '@/components/GoogleAnalytics'
 
-const siteUrl = 'https://peekup.ng'
+const siteUrl = 'https://usepeekup.com'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

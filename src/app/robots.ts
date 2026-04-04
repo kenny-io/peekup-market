@@ -70,7 +70,7 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
       },
     ],
-    sitemap: 'https://peekup.ng/sitemap.xml',
-    host: 'https://peekup.ng',
+    sitemap: 'https://usepeekup.com/sitemap.xml',
+    host: 'https://usepeekup.com',
   }
 }

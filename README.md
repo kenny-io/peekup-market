@@ -118,5 +118,5 @@ This project is proprietary software. All rights reserved.
 
 ## Contact
 
-- Website: [peekup.ng](https://peekup.ng)
-- Email: hello@peekup.ng
+- Website: [usepeekup.com](https://usepeekup.com)
+- Email: hello@usepeekup.com

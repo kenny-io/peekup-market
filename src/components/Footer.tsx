@@ -65,6 +65,9 @@ export function Footer() {
               <Link href="/privacy" className="text-gray-500 hover:text-orange-600">
                 Privacy Policy
               </Link>
+              <Link href="/sitemap.xml" className="text-gray-500 hover:text-orange-600">
+                Sitemap
+              </Link>
             </div>
           </div>
         </div>

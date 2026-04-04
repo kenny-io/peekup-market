@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: 'Join the Peekup Waitlist',
     description:
       'Be the first to know when Peekup launches. Order from local businesses in Enugu with fast delivery.',
-    url: 'https://peekup.ng/waitlist',
+    url: 'https://usepeekup.com/waitlist',
     images: [{ url: '/seo/peekupseo.png', width: 1200, height: 630 }],
   },
   twitter: {
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     images: ['/seo/peekupseo.png'],
   },
   alternates: {
-    canonical: 'https://peekup.ng/waitlist',
+    canonical: 'https://usepeekup.com/waitlist',
   },
 }
 

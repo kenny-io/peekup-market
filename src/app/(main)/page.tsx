@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     title: 'Peekup - Shop Enugu in One App',
     description:
       'Order from 220+ local businesses in Enugu. Fast delivery by Peekup riders with real-time tracking.',
-    url: 'https://peekup.ng',
+    url: 'https://usepeekup.com',
     images: [{ url: '/seo/peekupseo.png', width: 1200, height: 630 }],
   },
   twitter: {
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     images: ['/seo/peekupseo.png'],
   },
   alternates: {
-    canonical: 'https://peekup.ng',
+    canonical: 'https://usepeekup.com',
   },
 }
 

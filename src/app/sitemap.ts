@@ -1,7 +1,7 @@
 import { type MetadataRoute } from 'next'
 import { getAllSlugs } from '@/lib/blog-articles'
 
-const siteUrl = 'https://peekup.ng'
+const siteUrl = 'https://usepeekup.com'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const blogSlugs = getAllSlugs()

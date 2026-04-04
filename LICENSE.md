@@ -50,5 +50,5 @@ This license shall be governed by and construed in accordance with the laws of t
 
 For licensing inquiries, please contact:
 
-- Email: hello@peekup.ng
-- Website: https://peekup.ng
+- Email: hello@usepeekup.com
+- Website: https://usepeekup.com

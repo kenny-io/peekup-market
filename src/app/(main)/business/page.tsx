@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     title: 'Peekup Business - Corporate Logistics Platform',
     description:
       'Stop using petty cash for deliveries. Manage fleets, track digital waybills, and automate payments with Peekup Business.',
-    url: 'https://peekup.ng/business',
+    url: 'https://usepeekup.com/business',
     images: [{ url: '/seo/peekupseo.png', width: 1200, height: 630 }],
   },
   twitter: {
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     images: ['/seo/peekupseo.png'],
   },
   alternates: {
-    canonical: 'https://peekup.ng/business',
+    canonical: 'https://usepeekup.com/business',
   },
 }
 

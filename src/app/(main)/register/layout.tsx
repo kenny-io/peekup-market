@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     title: 'Sign Up for Peekup',
     description:
       'Create your account and start ordering from local businesses in Enugu.',
-    url: 'https://peekup.ng/register',
+    url: 'https://usepeekup.com/register',
     images: [{ url: '/seo/peekupseo.png', width: 1200, height: 630 }],
   },
   robots: {
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   alternates: {
-    canonical: 'https://peekup.ng/register',
+    canonical: 'https://usepeekup.com/register',
   },
 }
 

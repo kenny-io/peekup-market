@@ -5,10 +5,10 @@
   "private": true,
   "author": {
     "name": "Peekup",
-    "email": "hello@peekup.ng",
-    "url": "https://peekup.ng"
+    "email": "hello@usepeekup.com",
+    "url": "https://usepeekup.com"
   },
-  "homepage": "https://peekup.ng",
+  "homepage": "https://usepeekup.com",
   "repository": {
     "type": "git",
     "url": "https://github.com/peekup/peekup-market"
