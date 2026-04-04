@@ -9,6 +9,7 @@ import {
   getArticleBySlug,
   getAllSlugs,
   getCategoryColorClass,
+  buildArticleSchemas,
   type ArticleSection,
   type CardItem,
 } from '@/lib/blog-articles'
@@ -29,6 +30,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: article.title,
     description: article.description,
+    keywords: article.keywords,
     openGraph: {
       title: article.title,
       description: article.description,
@@ -37,6 +39,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       publishedTime: article.datePublished,
       modifiedTime: article.dateModified,
       authors: ['Peekup'],
+      tags: article.keywords,
       images: [{ url: '/seo/peekupseo.png', width: 1200, height: 630 }],
     },
     twitter: {
@@ -56,7 +59,7 @@ function SectionRenderer({ section }: { section: ArticleSection }) {
     case 'intro':
       return (
         <p
-          className="mt-6 text-lg leading-8 text-gray-700"
+          className="article-intro mt-6 text-lg leading-8 text-gray-700"
           dangerouslySetInnerHTML={{ __html: section.content ?? '' }}
         />
       )
@@ -201,31 +204,18 @@ export default async function BlogArticlePage({ params }: PageProps) {
   if (!article) notFound()
 
   const related = allArticles.filter((a) => article.relatedSlugs.includes(a.slug))
-
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: article.faqs.map((faq) => ({
-      '@type': 'Question',
-      name: faq.q,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: faq.a,
-      },
-    })),
-  }
+  const schemas = buildArticleSchemas(article)
 
   return (
     <>
-      {/* Structured data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(article.schema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
+      {/* Structured data — Article + FAQPage + BreadcrumbList + Organization + WebSite */}
+      {schemas.map((schema, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
 
       <div className="py-12 sm:py-20">
         <Container>
@@ -245,7 +235,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
 
             {/* Article header */}
             <header className="mt-8">
-              <div className="flex items-center gap-3">
+              <div className="flex flex-wrap items-center gap-3">
                 <span
                   className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-medium ${getCategoryColorClass(article.categoryColor)}`}
                 >
@@ -294,7 +284,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
                       className="rounded-2xl border border-gray-100 bg-gray-50 p-6"
                     >
                       <h3 className="text-base font-semibold text-gray-900">{faq.q}</h3>
-                      <p className="mt-2 text-sm leading-6 text-gray-700">{faq.a}</p>
+                      <p className="faq-answer mt-2 text-sm leading-6 text-gray-700">{faq.a}</p>
                     </div>
                   ))}
                 </div>

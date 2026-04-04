@@ -8,10 +8,10 @@ export interface BlogArticle {
   readMinutes: number
   datePublished: string
   dateModified: string
+  keywords: string[]
   sections: ArticleSection[]
   faqs: FAQ[]
   relatedSlugs: string[]
-  schema: object
 }
 
 export interface ArticleSection {
@@ -46,18 +46,260 @@ export interface FAQ {
   a: string
 }
 
+// ---------------------------------------------------------------------------
+// Shared schema building blocks
+// ---------------------------------------------------------------------------
+
+const SITE_URL = 'https://peekup.ng'
+
+const peekupOrganization = {
+  '@type': 'Organization',
+  '@id': `${SITE_URL}/#organization`,
+  name: 'Peekup',
+  url: SITE_URL,
+  logo: {
+    '@type': 'ImageObject',
+    url: `${SITE_URL}/favicon.PNG`,
+    width: 512,
+    height: 512,
+  },
+  description:
+    'Peekup is the Enugu-first digital marketplace connecting residents to 220+ local vendors for same-day delivery.',
+  areaServed: {
+    '@type': 'State',
+    name: 'Enugu State',
+    containedInPlace: {
+      '@type': 'Country',
+      name: 'Nigeria',
+    },
+  },
+  contactPoint: {
+    '@type': 'ContactPoint',
+    email: 'hello@peekup.ng',
+    contactType: 'customer support',
+    availableLanguage: ['English'],
+  },
+}
+
+const peekupWebSite = {
+  '@type': 'WebSite',
+  '@id': `${SITE_URL}/#website`,
+  url: SITE_URL,
+  name: 'Peekup',
+  description:
+    'The Enugu-first marketplace for same-day local delivery — groceries, food, electronics, fashion, pharmacy and more.',
+  publisher: { '@id': `${SITE_URL}/#organization` },
+  inLanguage: 'en-NG',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: `${SITE_URL}/vendors?q={search_term_string}`,
+    },
+    'query-input': 'required name=search_term_string',
+  },
+}
+
+const enugu = {
+  '@type': 'City',
+  name: 'Enugu',
+  containedInPlace: {
+    '@type': 'State',
+    name: 'Enugu State',
+    containedInPlace: { '@type': 'Country', name: 'Nigeria' },
+  },
+}
+
+/**
+ * Builds a rich JSON-LD graph for an individual blog article.
+ * Optimised for:
+ *  - Google rich results (Article, FAQPage, BreadcrumbList, Speakable)
+ *  - AI agents (ChatGPT, Perplexity, Claude, Gemini) that consume structured data
+ *    to answer shopping queries about Enugu
+ */
+export function buildArticleSchemas(article: BlogArticle): object[] {
+  const articleUrl = `${SITE_URL}/blog/${article.slug}`
+
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      peekupOrganization,
+      peekupWebSite,
+      {
+        '@type': 'Article',
+        '@id': `${articleUrl}#article`,
+        headline: article.headline,
+        description: article.description,
+        keywords: article.keywords.join(', '),
+        inLanguage: 'en-NG',
+        url: articleUrl,
+        mainEntityOfPage: { '@type': 'WebPage', '@id': articleUrl },
+        datePublished: article.datePublished,
+        dateModified: article.dateModified,
+        author: { '@id': `${SITE_URL}/#organization` },
+        publisher: { '@id': `${SITE_URL}/#organization` },
+        isPartOf: { '@id': `${SITE_URL}/#website` },
+        about: [
+          enugu,
+          {
+            '@type': 'Thing',
+            name: 'Online Shopping',
+            description: 'Purchasing goods via the internet with home delivery',
+          },
+          {
+            '@type': 'Thing',
+            name: article.category,
+          },
+        ],
+        mentions: [
+          {
+            '@type': 'Organization',
+            name: 'Peekup',
+            url: SITE_URL,
+            description: 'Enugu-first local delivery marketplace',
+          },
+          enugu,
+        ],
+        audience: {
+          '@type': 'Audience',
+          audienceType: 'Enugu State residents, university students, local shoppers',
+          geographicArea: {
+            '@type': 'State',
+            name: 'Enugu State',
+            containedInPlace: { '@type': 'Country', name: 'Nigeria' },
+          },
+        },
+        // Speakable: tell AI voice agents which CSS selectors hold the key content
+        speakable: {
+          '@type': 'SpeakableSpecification',
+          cssSelector: ['h1', 'h2', '.article-intro', '.faq-answer'],
+        },
+        image: {
+          '@type': 'ImageObject',
+          url: `${SITE_URL}/seo/peekupseo.png`,
+          width: 1200,
+          height: 630,
+        },
+      },
+    ],
+  }
+
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: article.faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.a,
+        // Let AI agents know these are verified answers from Peekup
+        author: { '@id': `${SITE_URL}/#organization` },
+      },
+    })),
+  }
+
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: SITE_URL,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Blog',
+        item: `${SITE_URL}/blog`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: article.category,
+        item: articleUrl,
+      },
+    ],
+  }
+
+  return [articleSchema, faqSchema, breadcrumbSchema]
+}
+
+/**
+ * Schemas for the blog index page — helps AI agents discover all Peekup content.
+ */
+export function buildBlogIndexSchemas(): object[] {
+  const blogUrl = `${SITE_URL}/blog`
+
+  const collectionSchema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      peekupOrganization,
+      peekupWebSite,
+      {
+        '@type': 'CollectionPage',
+        '@id': `${blogUrl}#collectionpage`,
+        url: blogUrl,
+        name: 'Peekup Blog — Shopping Guides for Enugu Residents',
+        description:
+          'Expert shopping guides, vendor tips, and local delivery insights for Enugu State residents and students.',
+        inLanguage: 'en-NG',
+        isPartOf: { '@id': `${SITE_URL}/#website` },
+        publisher: { '@id': `${SITE_URL}/#organization` },
+        about: [enugu, { '@type': 'Thing', name: 'Online Shopping in Nigeria' }],
+        hasPart: allArticles.map((a) => ({
+          '@type': 'Article',
+          url: `${SITE_URL}/blog/${a.slug}`,
+          headline: a.headline,
+          description: a.description,
+          datePublished: a.datePublished,
+          dateModified: a.dateModified,
+          keywords: a.keywords.join(', '),
+        })),
+      },
+    ],
+  }
+
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: blogUrl },
+    ],
+  }
+
+  return [collectionSchema, breadcrumbSchema]
+}
+
+// ---------------------------------------------------------------------------
+// Article data
+// ---------------------------------------------------------------------------
+
 export const allArticles: BlogArticle[] = [
   {
     slug: 'buy-groceries-online-enugu',
     title: 'Buy Groceries Online in Enugu | Peekup Local Delivery',
     headline: 'Buy Groceries Online in Enugu: Fresh Food Delivered to Your Door',
     description:
-      'Find out where to buy groceries online in Enugu with same-day delivery from local shops. Peekup connects you to 220+ local vendors across GRA, Independece Layout, and beyond.',
+      'Find out where to buy groceries online in Enugu with same-day delivery from local shops. Peekup connects you to 220+ local vendors across GRA, Independence Layout, and beyond.',
     category: 'Groceries',
     categoryColor: 'green',
     readMinutes: 6,
     datePublished: '2025-01-15',
     dateModified: '2025-04-04',
+    keywords: [
+      'buy groceries online Enugu',
+      'grocery delivery Enugu',
+      'food delivery Enugu',
+      'online supermarket Enugu',
+      'Enugu food delivery app',
+      'same day grocery delivery Enugu',
+      'Peekup grocery',
+      'Enugu local delivery',
+    ],
     relatedSlugs: [
       'online-shopping-guide-enugu',
       'student-shopping-guide-enugu',
@@ -205,22 +447,6 @@ export const allArticles: BlogArticle[] = [
         a: 'Yes. Every Peekup order includes real-time rider tracking so you always know exactly when your groceries will arrive.',
       },
     ],
-    schema: {
-      '@context': 'https://schema.org',
-      '@type': 'Article',
-      headline: 'Buy Groceries Online in Enugu: Fresh Food Delivered to Your Door',
-      description:
-        'Find where to buy groceries online in Enugu with same-day delivery from local shops.',
-      author: { '@type': 'Organization', name: 'Peekup' },
-      publisher: {
-        '@type': 'Organization',
-        name: 'Peekup',
-        logo: { '@type': 'ImageObject', url: 'https://peekup.ng/favicon.PNG' },
-      },
-      datePublished: '2025-01-15',
-      dateModified: '2025-04-04',
-      mainEntityOfPage: 'https://peekup.ng/blog/buy-groceries-online-enugu',
-    },
   },
   {
     slug: 'buy-electronics-online-enugu',
@@ -233,6 +459,16 @@ export const allArticles: BlogArticle[] = [
     readMinutes: 7,
     datePublished: '2025-01-20',
     dateModified: '2025-04-04',
+    keywords: [
+      'buy electronics online Enugu',
+      'buy phone Enugu',
+      'buy laptop Enugu',
+      'gadgets delivery Enugu',
+      'phone dealers Enugu',
+      'fairly used laptops Enugu',
+      'Peekup electronics',
+      'electronics shop Enugu online',
+    ],
     relatedSlugs: [
       'jumia-alternatives-enugu',
       'safe-online-shopping-enugu',
@@ -335,20 +571,6 @@ export const allArticles: BlogArticle[] = [
         a: 'Yes. Peekup partners with local laptop dealers in Enugu offering both new and refurbished options — great for students and professionals.',
       },
     ],
-    schema: {
-      '@context': 'https://schema.org',
-      '@type': 'Article',
-      headline: 'Buy Electronics Online in Enugu: Phones, Laptops & Gadgets Delivered',
-      author: { '@type': 'Organization', name: 'Peekup' },
-      publisher: {
-        '@type': 'Organization',
-        name: 'Peekup',
-        logo: { '@type': 'ImageObject', url: 'https://peekup.ng/favicon.PNG' },
-      },
-      datePublished: '2025-01-20',
-      dateModified: '2025-04-04',
-      mainEntityOfPage: 'https://peekup.ng/blog/buy-electronics-online-enugu',
-    },
   },
   {
     slug: 'buy-fashion-online-enugu',
@@ -361,6 +583,16 @@ export const allArticles: BlogArticle[] = [
     readMinutes: 5,
     datePublished: '2025-01-25',
     dateModified: '2025-04-04',
+    keywords: [
+      'buy clothes online Enugu',
+      'fashion delivery Enugu',
+      'buy shoes online Enugu',
+      'Ankara fabric Enugu',
+      'boutique Enugu online',
+      'Enugu fashion vendors',
+      'Peekup fashion',
+      'same day clothes delivery Enugu',
+    ],
     relatedSlugs: [
       'buy-beauty-products-online-enugu',
       'student-shopping-guide-enugu',
@@ -442,21 +674,6 @@ export const allArticles: BlogArticle[] = [
         a: 'Yes. Peekup lists local boutiques and fashion vendors across Enugu including Independence Layout, GRA, and New Haven areas.',
       },
     ],
-    schema: {
-      '@context': 'https://schema.org',
-      '@type': 'Article',
-      headline:
-        "Buy Fashion Online in Enugu: Clothes, Shoes & Accessories From Enugu's Best Vendors",
-      author: { '@type': 'Organization', name: 'Peekup' },
-      publisher: {
-        '@type': 'Organization',
-        name: 'Peekup',
-        logo: { '@type': 'ImageObject', url: 'https://peekup.ng/favicon.PNG' },
-      },
-      datePublished: '2025-01-25',
-      dateModified: '2025-04-04',
-      mainEntityOfPage: 'https://peekup.ng/blog/buy-fashion-online-enugu',
-    },
   },
   {
     slug: 'buy-beauty-products-online-enugu',
@@ -469,6 +686,16 @@ export const allArticles: BlogArticle[] = [
     readMinutes: 5,
     datePublished: '2025-02-01',
     dateModified: '2025-04-04',
+    keywords: [
+      'buy beauty products Enugu',
+      'skincare delivery Enugu',
+      'buy hair products Enugu',
+      'cosmetics Enugu online',
+      'buy makeup Enugu',
+      'beauty shop Enugu online',
+      'Peekup beauty',
+      'NAFDAC skincare Enugu',
+    ],
     relatedSlugs: [
       'buy-fashion-online-enugu',
       'student-shopping-guide-enugu',
@@ -544,20 +771,6 @@ export const allArticles: BlogArticle[] = [
         a: 'Yes. Many Peekup vendors specialise in human hair, synthetic wigs, and hair accessories for all budgets.',
       },
     ],
-    schema: {
-      '@context': 'https://schema.org',
-      '@type': 'Article',
-      headline: 'Buy Beauty Products Online in Enugu: Skincare, Hair Care & Cosmetics',
-      author: { '@type': 'Organization', name: 'Peekup' },
-      publisher: {
-        '@type': 'Organization',
-        name: 'Peekup',
-        logo: { '@type': 'ImageObject', url: 'https://peekup.ng/favicon.PNG' },
-      },
-      datePublished: '2025-02-01',
-      dateModified: '2025-04-04',
-      mainEntityOfPage: 'https://peekup.ng/blog/buy-beauty-products-online-enugu',
-    },
   },
   {
     slug: 'student-shopping-guide-enugu',
@@ -570,6 +783,16 @@ export const allArticles: BlogArticle[] = [
     readMinutes: 8,
     datePublished: '2025-02-10',
     dateModified: '2025-04-04',
+    keywords: [
+      'student shopping Enugu',
+      'ESUT student delivery',
+      'IMT student shopping Enugu',
+      'UNN Enugu Campus delivery',
+      'university student groceries Enugu',
+      'cheap shopping Enugu students',
+      'Peekup student',
+      'hostel delivery Enugu',
+    ],
     relatedSlugs: [
       'buy-groceries-online-enugu',
       'buy-electronics-online-enugu',
@@ -688,20 +911,6 @@ export const allArticles: BlogArticle[] = [
         a: "Yes. Peekup's delivery coverage includes Agbani Road and Ugwuaji area near ESUT.",
       },
     ],
-    schema: {
-      '@context': 'https://schema.org',
-      '@type': 'Article',
-      headline: 'The Ultimate Student Shopping Guide for Enugu: ESUT, IMT & UNN',
-      author: { '@type': 'Organization', name: 'Peekup' },
-      publisher: {
-        '@type': 'Organization',
-        name: 'Peekup',
-        logo: { '@type': 'ImageObject', url: 'https://peekup.ng/favicon.PNG' },
-      },
-      datePublished: '2025-02-10',
-      dateModified: '2025-04-04',
-      mainEntityOfPage: 'https://peekup.ng/blog/student-shopping-guide-enugu',
-    },
   },
   {
     slug: 'sell-online-enugu-vendors',
@@ -714,6 +923,16 @@ export const allArticles: BlogArticle[] = [
     readMinutes: 7,
     datePublished: '2025-02-15',
     dateModified: '2025-04-04',
+    keywords: [
+      'sell online Enugu',
+      'list business Enugu marketplace',
+      'vendor registration Peekup',
+      'online shop Enugu',
+      'small business Enugu online',
+      'e-commerce Enugu vendor',
+      'Peekup vendor',
+      'Enugu marketplace seller',
+    ],
     relatedSlugs: [
       'online-shopping-guide-enugu',
       'buy-groceries-online-enugu',
@@ -828,40 +1047,6 @@ export const allArticles: BlogArticle[] = [
         a: 'Yes. Food vendors, restaurants, and home cooks are among the most popular categories on Peekup in Enugu.',
       },
     ],
-    schema: {
-      '@context': 'https://schema.org',
-      '@type': 'HowTo',
-      name: 'How to Sell Online in Enugu: List Your Business on Peekup',
-      description:
-        'A guide for Enugu businesses on how to list and sell products on Peekup marketplace.',
-      step: [
-        {
-          '@type': 'HowToStep',
-          name: 'Visit the vendor registration page',
-          text: 'Go to peekup.ng/business and fill out the vendor registration form.',
-        },
-        {
-          '@type': 'HowToStep',
-          name: 'Provide business details',
-          text: 'Enter your business name, location, and contact information.',
-        },
-        {
-          '@type': 'HowToStep',
-          name: 'Upload product photos',
-          text: 'Add clear photos of your products with accurate prices.',
-        },
-        {
-          '@type': 'HowToStep',
-          name: 'Complete verification',
-          text: "Pass Peekup's vendor verification within 24–48 hours.",
-        },
-        {
-          '@type': 'HowToStep',
-          name: 'Start receiving orders',
-          text: 'Go live and start selling to thousands of Enugu customers.',
-        },
-      ],
-    },
   },
   {
     slug: 'online-shopping-guide-enugu',
@@ -874,6 +1059,16 @@ export const allArticles: BlogArticle[] = [
     readMinutes: 9,
     datePublished: '2025-02-20',
     dateModified: '2025-04-04',
+    keywords: [
+      'online shopping Enugu',
+      'how to shop online Enugu',
+      'best online shopping app Enugu',
+      'online shopping guide Nigeria',
+      'Enugu delivery apps 2025',
+      'shop online Enugu safely',
+      'Peekup shopping',
+      'online marketplace Enugu',
+    ],
     relatedSlugs: [
       'safe-online-shopping-enugu',
       'jumia-alternatives-enugu',
@@ -985,20 +1180,6 @@ export const allArticles: BlogArticle[] = [
         a: 'Peekup delivers within 1 hour for most in-town Enugu orders. National platforms like Jumia take 1–5 business days.',
       },
     ],
-    schema: {
-      '@context': 'https://schema.org',
-      '@type': 'Article',
-      headline: 'The Complete Online Shopping Guide for Enugu Residents (2025)',
-      author: { '@type': 'Organization', name: 'Peekup' },
-      publisher: {
-        '@type': 'Organization',
-        name: 'Peekup',
-        logo: { '@type': 'ImageObject', url: 'https://peekup.ng/favicon.PNG' },
-      },
-      datePublished: '2025-02-20',
-      dateModified: '2025-04-04',
-      mainEntityOfPage: 'https://peekup.ng/blog/online-shopping-guide-enugu',
-    },
   },
   {
     slug: 'jumia-alternatives-enugu',
@@ -1011,6 +1192,16 @@ export const allArticles: BlogArticle[] = [
     readMinutes: 6,
     datePublished: '2025-03-01',
     dateModified: '2025-04-04',
+    keywords: [
+      'Jumia alternatives Enugu',
+      'better than Jumia Enugu',
+      'Jumia competitor Enugu',
+      'local delivery app Enugu',
+      'Enugu e-commerce alternative',
+      'Peekup vs Jumia',
+      'Jumia slow delivery Enugu',
+      'best delivery app Enugu',
+    ],
     relatedSlugs: [
       'online-shopping-guide-enugu',
       'safe-online-shopping-enugu',
@@ -1119,20 +1310,6 @@ export const allArticles: BlogArticle[] = [
         a: 'Yes. Peekup delivers from local Enugu vendors in under 1 hour. Jumia typically takes 1–5 business days for Enugu deliveries.',
       },
     ],
-    schema: {
-      '@context': 'https://schema.org',
-      '@type': 'Article',
-      headline: "Best Jumia Alternatives in Enugu: Why Local Beats National in 2025",
-      author: { '@type': 'Organization', name: 'Peekup' },
-      publisher: {
-        '@type': 'Organization',
-        name: 'Peekup',
-        logo: { '@type': 'ImageObject', url: 'https://peekup.ng/favicon.PNG' },
-      },
-      datePublished: '2025-03-01',
-      dateModified: '2025-04-04',
-      mainEntityOfPage: 'https://peekup.ng/blog/jumia-alternatives-enugu',
-    },
   },
   {
     slug: 'safe-online-shopping-enugu',
@@ -1145,6 +1322,16 @@ export const allArticles: BlogArticle[] = [
     readMinutes: 7,
     datePublished: '2025-03-10',
     dateModified: '2025-04-04',
+    keywords: [
+      'safe online shopping Enugu',
+      'avoid online scams Enugu',
+      'secure payment Enugu',
+      'online fraud Nigeria',
+      'trusted online vendor Enugu',
+      'online shopping scam Nigeria',
+      'EFCC Nigeria scam',
+      'Peekup safe',
+    ],
     relatedSlugs: [
       'online-shopping-guide-enugu',
       'jumia-alternatives-enugu',
@@ -1259,20 +1446,6 @@ export const allArticles: BlogArticle[] = [
         a: 'Yes. Peekup verifies all vendors, processes payments through secure channels, and provides real-time delivery tracking and dispute resolution.',
       },
     ],
-    schema: {
-      '@context': 'https://schema.org',
-      '@type': 'Article',
-      headline: 'Safe Online Shopping in Enugu: How to Avoid Scams and Shop Securely',
-      author: { '@type': 'Organization', name: 'Peekup' },
-      publisher: {
-        '@type': 'Organization',
-        name: 'Peekup',
-        logo: { '@type': 'ImageObject', url: 'https://peekup.ng/favicon.PNG' },
-      },
-      datePublished: '2025-03-10',
-      dateModified: '2025-04-04',
-      mainEntityOfPage: 'https://peekup.ng/blog/safe-online-shopping-enugu',
-    },
   },
 ]
 
