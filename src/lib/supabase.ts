@@ -63,3 +63,36 @@ export interface RiderApplication {
   created_at?: string
   updated_at?: string
 }
+
+export interface AmbassadorApplication {
+  id?: string
+  full_name: string
+  phone: string
+  email: string
+  institution: string
+  department: string
+  year_of_study: string
+  instagram_handle?: string
+  tiktok_handle?: string
+  twitter_handle?: string
+  total_followers: string
+  posting_frequency: string
+  whatsapp_groups_count: string
+  is_whatsapp_admin: string
+  active_group_types: string
+  campus_activities: string
+  campus_reputation: string
+  why_ambassador: string
+  convince_story: string
+  lead_ambassador_interest: string
+  hours_per_week: string
+  voice_note_link?: string
+  availability: string
+  important_dates?: string
+  referral_source: string
+  status?: 'pending' | 'under_review' | 'approved' | 'rejected'
+  admin_notes?: string
+  reviewed_at?: string
+  created_at?: string
+  updated_at?: string
+}

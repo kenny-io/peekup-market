@@ -16,6 +16,7 @@ const NAV_ITEMS: NavItem[] = [
   { label: 'Peekup Go', href: '/go', muted: true },
   { label: 'Business', href: '/business', muted: true },
   { label: 'Vendors', href: '/vendors' },
+  { label: 'Ambassadors', href: '/ambassadors' },
   { label: 'FAQs', href: '/#faqs' },
 ]
 
