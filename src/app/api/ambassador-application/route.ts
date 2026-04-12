@@ -1,11 +1,13 @@
 import { NextResponse } from 'next/server'
 import { supabase } from '@/lib/supabase'
+import { sendAmbassadorConfirmationEmail } from '@/lib/email'
 
 export async function POST(request: Request) {
   try {
     const body = await request.json()
     const {
-      full_name,
+      first_name,
+      last_name,
       phone,
       email,
       institution,
@@ -32,7 +34,8 @@ export async function POST(request: Request) {
     } = body
 
     const requiredFields: Record<string, string> = {
-      full_name: 'Full Name',
+      first_name: 'First Name',
+      last_name: 'Last Name',
       phone: 'Phone Number',
       email: 'Email Address',
       institution: 'Institution',
@@ -68,7 +71,8 @@ export async function POST(request: Request) {
       .from('peekup_ambassador_applications')
       .insert([
         {
-          full_name,
+          first_name,
+          last_name,
           phone,
           email,
           institution,
@@ -112,6 +116,10 @@ export async function POST(request: Request) {
         { status: 500 },
       )
     }
+
+    sendAmbassadorConfirmationEmail(email, first_name, institution).catch((err) =>
+      console.error('Failed to send confirmation email:', err),
+    )
 
     return NextResponse.json(
       { message: 'Application submitted successfully', data },

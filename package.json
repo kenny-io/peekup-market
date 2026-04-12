@@ -31,6 +31,7 @@
     "next": "^15",
     "react": "^19",
     "react-dom": "^19",
+    "resend": "^6.10.0",
     "tailwindcss": "^4.1.15",
     "typescript": "^5.8.3",
     "use-debounce": "^10.0.5"

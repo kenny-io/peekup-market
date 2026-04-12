@@ -66,7 +66,8 @@ export interface RiderApplication {
 
 export interface AmbassadorApplication {
   id?: string
-  full_name: string
+  first_name: string
+  last_name: string
   phone: string
   email: string
   institution: string

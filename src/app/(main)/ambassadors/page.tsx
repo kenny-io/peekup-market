@@ -75,7 +75,7 @@ function SparkleIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 /* ─── Data constants ─── */
 
 const INSTITUTIONS = [
-  'University of Nigeria, Nsukka (UNN)',
+  'University of Nigeria, Enugu Campus (UNEC)',
   'Enugu State University of Science & Technology (ESUT)',
   'Institute of Management & Technology (IMT)',
   'Godfrey Okoye University',
@@ -83,7 +83,8 @@ const INSTITUTIONS = [
   'Coal City University',
   'Renaissance University',
   'OSISATECH',
-  'Enugu State Polytechnic',
+  'Peaceland College',
+  'Dental College',
   'Other',
 ]
 
@@ -207,10 +208,10 @@ const benefits = [
 ]
 
 const stats = [
-  { value: '15', label: 'Total Spots', mono: true },
+  { value: '30', label: 'Total Spots', mono: true },
   { value: '₦10k–₦20k', label: 'Monthly Stipend', mono: false },
-  { value: '10+', label: 'Campuses', mono: true },
-  { value: 'May 2026', label: 'Launch Date', mono: false },
+  { value: '10', label: 'Campuses', mono: true },
+  { value: '3', label: 'Per Campus', mono: true },
 ]
 
 /* ─── Reusable form sub-components ─── */
@@ -382,7 +383,8 @@ function ProgressStepper({ currentStep, onStepClick }: { currentStep: number; on
 
 const REQUIRED_FIELDS_BY_STEP: Record<number, { name: string; label: string; type?: 'radio' | 'checkbox' | 'select' }[]> = {
   1: [
-    { name: 'full_name', label: 'Full Name' },
+    { name: 'first_name', label: 'First Name' },
+    { name: 'last_name', label: 'Last Name' },
     { name: 'phone', label: 'Phone Number' },
     { name: 'email', label: 'Email Address' },
   ],
@@ -494,7 +496,8 @@ export default function AmbassadorsPage() {
 
     const fd = new FormData(e.currentTarget)
     const data = {
-      full_name: fd.get('full_name') as string,
+      first_name: fd.get('first_name') as string,
+      last_name: fd.get('last_name') as string,
       phone: fd.get('phone') as string,
       email: fd.get('email') as string,
       institution: fd.get('institution') as string,
@@ -593,7 +596,7 @@ export default function AmbassadorsPage() {
               transition={{ delay: 0.6 }}
             >
               If shortlisted, you&apos;ll receive a call or WhatsApp message within
-              5–7 days. Only 15 spots available across all campuses.
+              5–7 days. Only 30 spots available — 3 per campus.
             </motion.p>
             <motion.div
               className="mt-10"
@@ -749,7 +752,7 @@ export default function AmbassadorsPage() {
                 Founding Ambassador Application
               </h2>
               <p className="mt-4 text-base text-gray-600">
-                Reviewed on a rolling basis. Only 15 spots available.
+                Reviewed on a rolling basis. Only 3 spots per campus.
               </p>
             </div>
 
@@ -777,7 +780,10 @@ export default function AmbassadorsPage() {
                     <h3 className="text-lg font-semibold text-gray-900">Personal Information</h3>
                     <p className="mb-6 mt-1 text-sm text-gray-500">Basic details so we know who you are.</p>
                     <div className="space-y-5">
-                      <TextField label="Full Name" name="full_name" type="text" placeholder="Your full name" required />
+                      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                        <TextField label="First Name" name="first_name" type="text" placeholder="First name" required />
+                        <TextField label="Last Name" name="last_name" type="text" placeholder="Last name" required />
+                      </div>
                       <TextField label="Phone Number" name="phone" type="tel" placeholder="08012345678" required />
                       <TextField label="Email Address" name="email" type="email" placeholder="you@example.com" required />
                     </div>
