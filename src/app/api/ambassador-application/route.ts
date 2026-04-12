@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import { supabase } from '@/lib/supabase'
-import { sendAmbassadorConfirmationEmail } from '@/lib/email'
+import { sendAmbassadorConfirmationEmail, notifySlackAmbassadorApplication } from '@/lib/email'
 
 export async function POST(request: Request) {
   try {
@@ -120,6 +120,20 @@ export async function POST(request: Request) {
     sendAmbassadorConfirmationEmail(email, first_name, institution).catch((err) =>
       console.error('Failed to send confirmation email:', err),
     )
+
+    notifySlackAmbassadorApplication({
+      first_name,
+      last_name,
+      email,
+      phone,
+      institution,
+      department,
+      year_of_study,
+      total_followers,
+      lead_ambassador_interest,
+      hours_per_week,
+      voice_note_link,
+    }).catch((err) => console.error('Failed to send Slack notification:', err))
 
     return NextResponse.json(
       { message: 'Application submitted successfully', data },

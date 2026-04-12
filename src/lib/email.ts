@@ -200,3 +200,95 @@ export async function sendAmbassadorConfirmationEmail(
     return { success: false, error: err }
   }
 }
+
+/* ─── Slack notification ─── */
+
+interface AmbassadorSlackPayload {
+  first_name: string
+  last_name: string
+  email: string
+  phone: string
+  institution: string
+  department: string
+  year_of_study: string
+  total_followers: string
+  lead_ambassador_interest: string
+  hours_per_week: string
+  voice_note_link?: string | null
+}
+
+export async function notifySlackAmbassadorApplication(app: AmbassadorSlackPayload) {
+  const webhookUrl = process.env.SLACK_AMBASSADOR_WEBHOOK_URL
+  if (!webhookUrl) {
+    console.warn('SLACK_AMBASSADOR_WEBHOOK_URL not set — skipping Slack notification')
+    return
+  }
+
+  const leadTag =
+    app.lead_ambassador_interest.startsWith('Yes')
+      ? ':star: *Lead Candidate*'
+      : app.lead_ambassador_interest.startsWith('Open')
+        ? 'Open to either'
+        : 'Standard'
+
+  const voiceNote = app.voice_note_link
+    ? `:studio_microphone: <${app.voice_note_link}|Voice Note>`
+    : '_No voice note_'
+
+  const payload = {
+    blocks: [
+      {
+        type: 'header',
+        text: {
+          type: 'plain_text',
+          text: `:mega: New Ambassador Application`,
+          emoji: true,
+        },
+      },
+      {
+        type: 'section',
+        fields: [
+          { type: 'mrkdwn', text: `*Name*\n${app.first_name} ${app.last_name}` },
+          { type: 'mrkdwn', text: `*Email*\n${app.email}` },
+          { type: 'mrkdwn', text: `*Phone*\n${app.phone}` },
+          { type: 'mrkdwn', text: `*Institution*\n${app.institution}` },
+          { type: 'mrkdwn', text: `*Department*\n${app.department}` },
+          { type: 'mrkdwn', text: `*Year*\n${app.year_of_study}` },
+          { type: 'mrkdwn', text: `*Followers*\n${app.total_followers}` },
+          { type: 'mrkdwn', text: `*Hours/week*\n${app.hours_per_week}` },
+        ],
+      },
+      {
+        type: 'context',
+        elements: [
+          { type: 'mrkdwn', text: `${leadTag}  ·  ${voiceNote}` },
+        ],
+      },
+      {
+        type: 'actions',
+        elements: [
+          {
+            type: 'button',
+            text: { type: 'plain_text', text: 'Review in Admin', emoji: true },
+            url: `${BRAND.siteUrl}/admin/ambassadors`,
+            style: 'primary',
+          },
+        ],
+      },
+      { type: 'divider' },
+    ],
+  }
+
+  try {
+    const res = await fetch(webhookUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    })
+    if (!res.ok) {
+      console.error('Slack webhook error:', res.status, await res.text())
+    }
+  } catch (err) {
+    console.error('Slack notification error:', err)
+  }
+}
