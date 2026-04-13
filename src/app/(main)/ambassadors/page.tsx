@@ -217,7 +217,7 @@ const stats = [
 /* ─── Reusable form sub-components ─── */
 
 const textareaClasses =
-  'block w-full appearance-none rounded-[16px] border border-gray-200 bg-white px-4 py-3 text-gray-900 placeholder:text-gray-400 focus:border-orange-400 focus:outline-hidden focus:ring-2 focus:ring-orange-400/30 sm:text-sm transition-colors'
+  'block w-full appearance-none rounded-xl border border-gray-200 bg-white px-4 py-3 text-base text-gray-900 placeholder:text-gray-400 focus:border-orange-400 focus:outline-hidden focus:ring-2 focus:ring-orange-400/30 sm:rounded-[16px] sm:text-sm transition-colors'
 
 function CheckboxGroup({
   label,
@@ -249,7 +249,7 @@ function CheckboxGroup({
         {options.map((option) => (
           <label
             key={option}
-            className="group flex cursor-pointer items-start gap-3 rounded-2xl border border-gray-200 bg-white px-4 py-3.5 transition-all hover:border-orange-200 hover:shadow-sm has-[:checked]:border-orange-400 has-[:checked]:bg-orange-50 has-[:checked]:shadow-[0_0_0_1px_theme(colors.orange.400)]"
+            className="group flex cursor-pointer items-start gap-3 rounded-xl border border-gray-200 bg-white px-3 py-3 transition-all hover:border-orange-200 hover:shadow-sm has-[:checked]:border-orange-400 has-[:checked]:bg-orange-50 has-[:checked]:shadow-[0_0_0_1px_theme(colors.orange.400)] sm:rounded-2xl sm:px-4 sm:py-3.5"
           >
             <input
               type="checkbox"
@@ -257,9 +257,9 @@ function CheckboxGroup({
               value={option}
               checked={selectedValues.includes(option)}
               onChange={() => toggleValue(option)}
-              className="mt-0.5 h-4 w-4 rounded border-gray-300 text-orange-600 focus:ring-orange-500"
+              className="mt-0.5 h-4 w-4 shrink-0 rounded border-gray-300 text-orange-600 focus:ring-orange-500"
             />
-            <span className="text-sm text-gray-700 group-has-[:checked]:font-medium group-has-[:checked]:text-gray-900">{option}</span>
+            <span className="text-[13px] leading-snug text-gray-700 group-has-[:checked]:font-medium group-has-[:checked]:text-gray-900 sm:text-sm">{option}</span>
           </label>
         ))}
       </div>
@@ -290,16 +290,16 @@ function RadioGroup({
         {options.map((option) => (
           <label
             key={option}
-            className="group flex cursor-pointer items-start gap-3 rounded-2xl border border-gray-200 bg-white px-4 py-3.5 transition-all hover:border-orange-200 hover:shadow-sm has-[:checked]:border-orange-400 has-[:checked]:bg-orange-50 has-[:checked]:shadow-[0_0_0_1px_theme(colors.orange.400)]"
+            className="group flex cursor-pointer items-start gap-3 rounded-xl border border-gray-200 bg-white px-3 py-3 transition-all hover:border-orange-200 hover:shadow-sm has-[:checked]:border-orange-400 has-[:checked]:bg-orange-50 has-[:checked]:shadow-[0_0_0_1px_theme(colors.orange.400)] sm:rounded-2xl sm:px-4 sm:py-3.5"
           >
             <input
               type="radio"
               name={name}
               value={option}
               required={required}
-              className="mt-0.5 h-4 w-4 border-gray-300 text-orange-600 focus:ring-orange-500"
+              className="mt-0.5 h-4 w-4 shrink-0 border-gray-300 text-orange-600 focus:ring-orange-500"
             />
-            <span className="text-sm text-gray-700 group-has-[:checked]:font-medium group-has-[:checked]:text-gray-900">{option}</span>
+            <span className="text-[13px] leading-snug text-gray-700 group-has-[:checked]:font-medium group-has-[:checked]:text-gray-900 sm:text-sm">{option}</span>
           </label>
         ))}
       </div>
@@ -1013,14 +1013,14 @@ export default function AmbassadorsPage() {
                         {REFERRAL_SOURCES.map((source) => <option key={source} value={source}>{source}</option>)}
                       </SelectField>
 
-                      <label className="group flex cursor-pointer items-start gap-3 rounded-2xl border border-gray-200 bg-white px-4 py-3.5 transition-all has-[:checked]:border-orange-400 has-[:checked]:bg-orange-50 has-[:checked]:shadow-[0_0_0_1px_theme(colors.orange.400)]">
+                      <label className="group flex cursor-pointer items-start gap-3 rounded-xl border border-gray-200 bg-white px-3 py-3 transition-all has-[:checked]:border-orange-400 has-[:checked]:bg-orange-50 has-[:checked]:shadow-[0_0_0_1px_theme(colors.orange.400)] sm:rounded-2xl sm:px-4 sm:py-3.5">
                         <input
                           type="checkbox"
                           name="accuracy_confirmed"
                           required
-                          className="mt-0.5 h-4 w-4 rounded border-gray-300 text-orange-600 focus:ring-orange-500"
+                          className="mt-0.5 h-4 w-4 shrink-0 rounded border-gray-300 text-orange-600 focus:ring-orange-500"
                         />
-                        <span className="text-sm text-gray-700 group-has-[:checked]:font-medium group-has-[:checked]:text-gray-900">
+                        <span className="text-[13px] leading-snug text-gray-700 group-has-[:checked]:font-medium group-has-[:checked]:text-gray-900 sm:text-sm">
                           I confirm that everything I&apos;ve shared in this application is accurate.
                           I understand that misrepresentation disqualifies my application.
                         </span>

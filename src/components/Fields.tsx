@@ -2,7 +2,7 @@ import { useId } from 'react'
 import clsx from 'clsx'
 
 const formClasses =
-  'block w-full appearance-none rounded-[16px] border border-gray-200 bg-white px-[calc(--spacing(3)-1px)] py-[calc(--spacing(2)-1px)] text-gray-900 placeholder:text-gray-400 focus:border-indigo-500 focus:outline-hidden focus:ring-2 focus:ring-indigo-500/40 sm:text-sm'
+  'block w-full appearance-none rounded-[16px] border border-gray-200 bg-white px-4 py-2.5 text-base text-gray-900 placeholder:text-gray-400 focus:border-orange-400 focus:outline-hidden focus:ring-2 focus:ring-orange-400/30 sm:text-sm transition-colors'
 
 function Label({ id, children, required }: { id: string; children: React.ReactNode; required?: boolean }) {
   return (
@@ -42,7 +42,7 @@ export function SelectField({
   return (
     <div className={className}>
       {label && <Label id={id} required={props.required}>{label}</Label>}
-      <select id={id} {...props} className={clsx(formClasses, 'pr-8')} />
+      <select id={id} {...props} className={clsx(formClasses, 'pr-10 truncate')} />
     </div>
   )
 }
