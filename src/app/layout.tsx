@@ -76,6 +76,41 @@ export const metadata: Metadata = {
   manifest: '/site.webmanifest',
 }
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${siteUrl}/#organization`,
+      name: 'Peekup',
+      url: siteUrl,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${siteUrl}/favicon.PNG`,
+        width: 512,
+        height: 512,
+      },
+      description:
+        'Peekup is the Enugu-first digital marketplace connecting residents to 220+ local vendors for same-day delivery.',
+      contactPoint: {
+        '@type': 'ContactPoint',
+        email: 'hello@usepeekup.com',
+        contactType: 'customer support',
+        availableLanguage: ['English'],
+      },
+      sameAs: ['https://twitter.com/peekupng'],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${siteUrl}/#website`,
+      url: siteUrl,
+      name: 'Peekup',
+      publisher: { '@id': `${siteUrl}/#organization` },
+      inLanguage: 'en-NG',
+    },
+  ],
+}
+
 export default function RootLayout({
   children,
 }: {
@@ -86,6 +121,10 @@ export default function RootLayout({
       <body>
         <GoogleAnalyticsScripts />
         <GoogleAnalytics />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {children}
       </body>
     </html>

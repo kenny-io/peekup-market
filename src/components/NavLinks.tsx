@@ -11,12 +11,13 @@ type NavItem = {
 }
 
 const NAV_ITEMS: NavItem[] = [
+  { label: 'About', href: '/about' },
   { label: 'Features', href: '/#features' },
   { label: 'Services', href: '/#services' },
   { label: 'Peekup Go', href: '/go', muted: true },
   { label: 'Business', href: '/business', muted: true },
   { label: 'Vendors', href: '/vendors' },
-  { label: 'Ambassadors', href: '/ambassadors' },
+  { label: 'Blog', href: '/blog' },
   { label: 'FAQs', href: '/#faqs' },
 ]
 

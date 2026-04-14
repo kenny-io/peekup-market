@@ -1,5 +1,6 @@
 import { type Metadata } from 'next'
 
+import { BlogHighlights } from '@/components/BlogHighlights'
 import { CallToAction } from '@/components/CallToAction'
 import { Faqs } from '@/components/Faqs'
 import { Hero } from '@/components/Hero'
@@ -38,6 +39,7 @@ export default function Home() {
       <CallToAction />
       <Reviews />
       <Services />
+      <BlogHighlights />
       <Faqs />
     </>
   )

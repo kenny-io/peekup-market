@@ -1457,6 +1457,16 @@ export function getAllSlugs(): string[] {
   return allArticles.map((a) => a.slug)
 }
 
+export function getAllArticleMeta(): {
+  slug: string
+  dateModified: string
+}[] {
+  return allArticles.map((a) => ({
+    slug: a.slug,
+    dateModified: a.dateModified,
+  }))
+}
+
 const categoryColors: Record<string, string> = {
   green: 'bg-green-100 text-green-800',
   blue: 'bg-blue-100 text-blue-800',
