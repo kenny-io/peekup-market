@@ -289,7 +289,7 @@ export const allArticles: BlogArticle[] = [
     categoryColor: 'green',
     readMinutes: 6,
     datePublished: '2025-01-15',
-    dateModified: '2025-04-04',
+    dateModified: '2026-04-14',
     keywords: [
       'buy groceries online Enugu',
       'grocery delivery Enugu',
@@ -458,7 +458,7 @@ export const allArticles: BlogArticle[] = [
     categoryColor: 'blue',
     readMinutes: 7,
     datePublished: '2025-01-20',
-    dateModified: '2025-04-04',
+    dateModified: '2026-04-14',
     keywords: [
       'buy electronics online Enugu',
       'buy phone Enugu',
@@ -582,7 +582,7 @@ export const allArticles: BlogArticle[] = [
     categoryColor: 'purple',
     readMinutes: 5,
     datePublished: '2025-01-25',
-    dateModified: '2025-04-04',
+    dateModified: '2026-04-14',
     keywords: [
       'buy clothes online Enugu',
       'fashion delivery Enugu',
@@ -685,7 +685,7 @@ export const allArticles: BlogArticle[] = [
     categoryColor: 'pink',
     readMinutes: 5,
     datePublished: '2025-02-01',
-    dateModified: '2025-04-04',
+    dateModified: '2026-04-14',
     keywords: [
       'buy beauty products Enugu',
       'skincare delivery Enugu',
@@ -782,7 +782,7 @@ export const allArticles: BlogArticle[] = [
     categoryColor: 'orange',
     readMinutes: 8,
     datePublished: '2025-02-10',
-    dateModified: '2025-04-04',
+    dateModified: '2026-04-14',
     keywords: [
       'student shopping Enugu',
       'ESUT student delivery',
@@ -922,7 +922,7 @@ export const allArticles: BlogArticle[] = [
     categoryColor: 'indigo',
     readMinutes: 7,
     datePublished: '2025-02-15',
-    dateModified: '2025-04-04',
+    dateModified: '2026-04-14',
     keywords: [
       'sell online Enugu',
       'list business Enugu marketplace',
@@ -1058,7 +1058,7 @@ export const allArticles: BlogArticle[] = [
     categoryColor: 'teal',
     readMinutes: 9,
     datePublished: '2025-02-20',
-    dateModified: '2025-04-04',
+    dateModified: '2026-04-14',
     keywords: [
       'online shopping Enugu',
       'how to shop online Enugu',
@@ -1191,7 +1191,7 @@ export const allArticles: BlogArticle[] = [
     categoryColor: 'red',
     readMinutes: 6,
     datePublished: '2025-03-01',
-    dateModified: '2025-04-04',
+    dateModified: '2026-04-14',
     keywords: [
       'Jumia alternatives Enugu',
       'better than Jumia Enugu',
@@ -1321,7 +1321,7 @@ export const allArticles: BlogArticle[] = [
     categoryColor: 'green',
     readMinutes: 7,
     datePublished: '2025-03-10',
-    dateModified: '2025-04-04',
+    dateModified: '2026-04-14',
     keywords: [
       'safe online shopping Enugu',
       'avoid online scams Enugu',
