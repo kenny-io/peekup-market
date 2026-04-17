@@ -136,36 +136,50 @@ export function buildAmbassadorConfirmationEmail(firstName: string, institution:
             </tr>
           </table>
 
-          <!-- Stipend highlight -->
+          <!-- Perks highlight -->
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:24px;">
             <tr>
               <td style="border-left:3px solid ${BRAND.orange};padding:12px 0 12px 16px;">
                 <p style="margin:0;font-size:14px;line-height:1.5;color:${BRAND.gray};">
-                  Selected ambassadors receive a <strong style="color:${BRAND.dark};">&nbsp;&#8358;10,000&ndash;&#8358;20,000 monthly stipend</strong>, branded merch, and first-in-line access to future paid roles at Peekup.
+                  Selected ambassadors receive a <strong style="color:${BRAND.dark};">monthly stipend</strong>, branded merch, and first-in-line access to future paid roles at Peekup.
                 </p>
               </td>
             </tr>
           </table>
 
           <p style="margin:28px 0 0;font-size:15px;line-height:1.7;color:${BRAND.gray};">
-            In the meantime, make sure your phone and WhatsApp are reachable. If you submitted a voice note, you&rsquo;re already ahead &mdash; those applications are reviewed first.
+            If you submitted a voice note, you&rsquo;re already ahead &mdash; those applications are reviewed first.
           </p>
+
+          <!-- WhatsApp callout -->
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:24px;">
+            <tr>
+              <td style="background-color:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:20px;">
+                <p style="margin:0 0 4px;font-size:15px;font-weight:700;color:${BRAND.dark};">
+                  Next step &mdash; Join the Ambassador WhatsApp Group
+                </p>
+                <p style="margin:0;font-size:14px;line-height:1.6;color:${BRAND.gray};">
+                  All updates, shortlist announcements, and onboarding will happen exclusively in our WhatsApp group. Make sure you join now so you don&rsquo;t miss anything.
+                </p>
+              </td>
+            </tr>
+          </table>
+
+          <!-- CTA -->
+          <table role="presentation" cellpadding="0" cellspacing="0" style="margin-top:20px;">
+            <tr>
+              <td style="background-color:#25D366;border-radius:12px;">
+                <a href="https://chat.whatsapp.com/Ks4HPjLUhH60WiDvLJnFst" target="_blank" style="display:inline-block;padding:14px 28px;font-size:14px;font-weight:600;color:#ffffff;text-decoration:none;letter-spacing:0.01em;">
+                  Join the WhatsApp Group Now &rarr;
+                </a>
+              </td>
+            </tr>
+          </table>
 
           <p style="margin:24px 0 0;font-size:15px;line-height:1.7;color:${BRAND.gray};">
             Welcome aboard,<br/>
             <strong style="color:${BRAND.dark};">The Peekup Team</strong>
           </p>
-
-          <!-- CTA -->
-          <table role="presentation" cellpadding="0" cellspacing="0" style="margin-top:28px;">
-            <tr>
-              <td style="background-color:${BRAND.orange};border-radius:12px;">
-                <a href="https://join.slack.com/t/peekupworkspace/shared_invite/zt-3ve7uxo0g-34L5Yia60yRV~U45E9~p4g" target="_blank" style="display:inline-block;padding:14px 28px;font-size:14px;font-weight:600;color:${BRAND.white};text-decoration:none;letter-spacing:0.01em;">
-                  Join Peekup on Slack &rarr;
-                </a>
-              </td>
-            </tr>
-          </table>
 
         </td>
       </tr>
