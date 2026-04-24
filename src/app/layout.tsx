@@ -1,7 +1,15 @@
 import { type Metadata } from 'next'
+import { Plus_Jakarta_Sans } from 'next/font/google'
 import '@/styles/tailwind.css'
 import { GoogleAnalyticsScripts } from '@/components/GoogleAnalyticsScripts'
 import { GoogleAnalytics } from '@/components/GoogleAnalytics'
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  variable: '--font-plus-jakarta-sans',
+  weight: ['300', '400', '500', '600', '700', '800'],
+  display: 'swap',
+})
 
 const siteUrl = 'https://usepeekup.com'
 
@@ -117,7 +125,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="bg-gray-50 text-gray-900 antialiased font-sans">
+    <html
+      lang="en"
+      className={`${plusJakartaSans.variable} bg-gray-50 text-gray-900 antialiased font-sans`}
+    >
       <body>
         <GoogleAnalyticsScripts />
         <GoogleAnalytics />

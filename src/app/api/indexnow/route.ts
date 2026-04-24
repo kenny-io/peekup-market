@@ -14,6 +14,7 @@ const STATIC_PATHS = [
   '/waitlist',
   '/go',
   '/ambassadors',
+  '/support',
   '/privacy',
   '/terms',
 ]

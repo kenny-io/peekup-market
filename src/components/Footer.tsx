@@ -17,6 +17,7 @@ const footerLinks = {
     { label: 'Blog', href: '/blog' },
     { label: 'Business', href: '/business' },
     { label: 'Vendors', href: '/vendors' },
+    { label: 'Support', href: '/support' },
   ],
   Programs: [
     { label: 'Peekup Go', href: '/go' },
